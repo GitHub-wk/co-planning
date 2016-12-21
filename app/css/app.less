@@ -1,0 +1,87 @@
+/*
+ *@author wk
+ *@descript 主样式文件
+ */
+ 
+ //varabels
+ @backgroundColor:#f0f0f0;
+ /*
+ 
+  main style
+ ------------------------------------------------------
+  */
+ body {
+		background-color: @backgroundColor;
+		margin: 0px;
+		overflow: hidden;
+		user-select:none;
+	}
+	.wrapper{
+	  position: absolute;
+	  top:0;
+	  bottom: 0;
+	  right: 0;
+	  left: 0;
+	  max-width:1800px;
+	  min-width:768px;
+	}
+	.header{
+		position:absolute;
+		top:0;
+		height:32px;
+		width:100%;
+		.menu{
+			height:100%;
+			background-color:#eee;
+			.item{
+				display:inline-block;
+				line-height:32px;
+				padding:0 10px;
+				color:#888;
+				font-size:15px;
+				cursor:pointer;
+			}
+		}	
+	}
+	.content{
+		overflow:hidden;
+		position:absolute;
+		top:32px;
+		bottom:0;
+		width:100%;
+		.primary{
+			margin-right:300px;
+			height: 100%;
+			.map{
+				height: 100%;
+			}			
+		}
+		.secondary{
+			width:300px;
+			height: 100%;
+			position:absolute;
+			right:0;
+			top:0;
+			overflow-y:auto;
+			background-color:#eee;
+			.obj-info{
+				
+			}
+		}
+	}
+
+/*
+component style
+---------------------------------------------------------------
+ */
+//info pan
+.obj-info{
+	color:#888;
+}
+//stats pan
+#Stats-output{
+	position:absolute;
+	left:0;
+	bottom:0;
+}
+

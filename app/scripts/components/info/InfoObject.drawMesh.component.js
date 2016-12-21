@@ -1,0 +1,1 @@
+// InfoObject.drawMesh.component.js
