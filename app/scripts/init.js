@@ -14,6 +14,7 @@ import {LayerCollection} from './components/Layer/LayerCollection.js';
 import {Layer} from './components/Layer/Layer.js';
 
 var world=worldFactory.generateDefaultWorld();
+console.log(world);
 
 //layerCollection
 var layerCollection=new LayerCollection();
@@ -22,8 +23,6 @@ world.addToScene(layerCollection.defaultLayer.object);
 
 //groundLayer
 var groundLayer=new GroundLayer();
-console.log(world);
-console.log(groundLayer);
 groundLayer.resetWorld(world);
 groundLayer.add(new Ground(500,'images/textures/ground_1.jpg'));
 layerCollection.addLayer(groundLayer);
