@@ -26,7 +26,6 @@ export class World3d{
 		this.moveToPoint(vec3);
 	}
 	moveToPoint(point){
-		console.log(point);
 		this.camera.position.copy(point);
 		this.camera.lookAt(new THREE.Vector3(point.x,point.y,0));
 		this.camera.updateMatrixWorld(true);

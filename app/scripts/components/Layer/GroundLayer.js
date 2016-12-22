@@ -2,7 +2,7 @@
 import * as THREE from 'threejs';
 import {TileLayer} from './TileLayer.js';
 import {MercatorProjection} from '../../geo/MercatorProjection.js';
-console.log(new MercatorProjection());
+
 /**
  * @class create a  landMesh;
  */
