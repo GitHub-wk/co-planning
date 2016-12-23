@@ -8,6 +8,7 @@ import * as THREE from 'threejs';
 import {BUILDING_CONSTS} from './dataservice/CONSTANTS.js';
 import {infoInit,infoBuildingInit,layerTab,objectTab} from './InfoDefaultInit.js';
 import {drawPanInit} from './DrawDefaultInit.js';
+import './MenuDefaultInit.js';
 import {Ground,GroundLayer} from './components/Layer/GroundLayer.js';
 import {DRAWSIGNAL} from './components/draw/Draw.component.js';
 import {LayerCollection} from './components/Layer/LayerCollection.js';
