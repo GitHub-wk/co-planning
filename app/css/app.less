@@ -33,7 +33,7 @@
 		.menu{
 			height:100%;
 			background-color:#eee;
-			.item{
+			.menu-bar{
 				display:inline-block;
 				line-height:32px;
 				padding:0 10px;
@@ -42,6 +42,18 @@
 				cursor:pointer;
 			}
 		}	
+	}
+	.menu-bar .menu-file{
+		position:absolute;
+		display:none;
+		z-index:10;
+		background:#fff;
+		.item{
+			padding:10px;
+		}
+	}
+	.menu-bar:hover .menu-file{
+		display:block;
 	}
 	.content{
 		overflow:hidden;
