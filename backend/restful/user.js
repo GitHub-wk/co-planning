@@ -2,7 +2,7 @@
 var express=require('express');
 var router=express.Router();
 var userModel=require('../database/model/userModel');
-
+var userLayer=require('../database/layers/userLayer.js');
 var STATUS=require('./CONSTANT.js').STATUS;
 //login restful
 router.post('/login',function(req,res){
@@ -11,7 +11,9 @@ router.post('/login',function(req,res){
 		if(error||!user){ back={msg:STATUS.LOGIN_ERROR.lng,data:null,code:STATUS.LOGIN_SUCCESS.code}}
 		else{
 			console.log('login',req.body.userName);
+			var user=userLayer.add(user);
 			back={msg:STATUS.LOGIN_SUCCESS.lng,data:user,code:STATUS.LOGIN_SUCCESS.code};
+
 		}
 		res.json(back);
 
