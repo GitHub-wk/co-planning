@@ -3,15 +3,15 @@ var express=require('express');
 var router=express.Router();
 var userModel=require('../database/model/userModel');
 
-var CODE=require('./CONSTANT.js').CODE;
+var STATUS=require('./CONSTANT.js').STATUS;
 //login restful
 router.post('/login',function(req,res){
 	userModel.findOne({userName:req.body.userName,password:req.body.password},function(error,user){
 		var back=null;
-		if(error||!user){ back={msg:'登陆失败',data:null,code:CODE.LOGIN_ERROR}}
+		if(error||!user){ back={msg:STATUS.LOGIN_ERROR.lng,data:null,code:STATUS.LOGIN_SUCCESS.code}}
 		else{
 			console.log('login',req.body.userName);
-			back={msg:'登陆成功',data:user,code:CODE.LOGIN_SUCCESS};
+			back={msg:STATUS.LOGIN_SUCCESS.lng,data:user,code:STATUS.LOGIN_SUCCESS.code};
 		}
 		res.json(back);
 
@@ -29,11 +29,11 @@ router.post('/register',function(req,res){
 	user.save(function(error){
 		var back=null;
 		if(error){
-			back={msg:'注册失败',data:null,code:CODE.REGISTER_ERROR};
+			back={msg:STATUS.REGISTER_ERROR.lng,data:null,code:STATUS.REGISTER_ERROR.code};
 		}
 		else{
-			back={msg:'注册成功',data:user};
-			console.log('注册成功',user.email,code:CODE.REGISTER_SUCCESS);
+			back={msg:STATUS.REGISTER_SUCCESS.lng,data:user,code:STATUS.REGISTER_SUCCESS.code};
+			console.log('注册成功',user.email);
 		}
 		res.json(back);
 	});
