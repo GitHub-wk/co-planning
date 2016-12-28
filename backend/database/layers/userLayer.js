@@ -12,7 +12,7 @@ userLayer.prototype.add=function (user) {
 		userName:user.userName,
 		email:user.email,
 		unionId:unionId,
-		faceImg:user.faceImg,
+        faceImg: user.faceImg,
 	};
 	return this.users[unionId];
 }
@@ -24,6 +24,14 @@ userLayer.prototype.remove=function(user){
 			delete this.users[unionId];
 		}
 	}
+}
+
+userLayer.prototype.auth = function (userName,unionId) {
+    var user = this.users[unionId];
+    if (user && user.userName === userName) { 
+        return user;
+    }
+    return false;
 }
 
 

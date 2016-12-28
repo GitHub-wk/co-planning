@@ -6,9 +6,11 @@ var userLayer=require('../database/layers/userLayer.js');
 var STATUS=require('./CONSTANT.js').STATUS;
 //login restful
 router.post('/login',function(req,res){
-	userModel.findOne({userName:req.body.userName,password:req.body.password},function(error,user){
+	userModel.findOne({email:req.body.email,password:req.body.password},function(error,user){
 		var back=null;
-		if(error||!user){ back={msg:STATUS.LOGIN_ERROR.lng,data:null,code:STATUS.LOGIN_SUCCESS.code}}
+        if (error || !user) {
+            back = { msg: STATUS.LOGIN_ERROR.lng, data: null, code: STATUS.LOGIN_SUCCESS.code }
+        }
 		else{
 			console.log('login',req.body.userName);
 			var user=userLayer.add(user);
@@ -27,6 +29,7 @@ router.post('/register',function(req,res){
 		userName:req.body.userName,
 		email:req.body.email,
 		password:req.body.password,
+		faceImg:req.body.faceImg
 	});
 	user.save(function(error){
 		var back=null;

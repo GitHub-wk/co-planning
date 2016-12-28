@@ -4,9 +4,11 @@ var mongoose=require('mongoose');
 
 var start=function(databaseName){
 	var databaseName='co-planning'||databaseName;
-	mongoose.connect('mongodb://localhost/'+databaseName);
+	mongoose.connect('mongodb://wk:19920910wk@localhost/'+databaseName);
 	var db=mongoose.connection;
-	db.on('error',function(){console.log('error connect');});
+    db.on('error', function (){
+        console.log('error connect');
+    });
 	db.on('open',function(){console.log('connect to：'+databaseName)});
 	return db;
 }
