@@ -1,5 +1,4 @@
-// CONSTANT.js
-// 
+// STATUS_CONSTANT.js
 var STATUS={
 	"ERROR":{lng:'操作错误',code:0},
 	"SUCCESS":{lng:'操作成功',code:1},
@@ -10,9 +9,5 @@ var STATUS={
 	"LOGOUT_SUCCESS":{lng:"注销成功",code:30},
 	"AUTH_ERROR":{lng:"验证失败",code:41},
 }
-var LNG={
-	
-}
-module.exports={
-	STATUS:STATUS,
-}
+
+module.exports=STATUS;

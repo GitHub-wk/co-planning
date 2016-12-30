@@ -6,7 +6,7 @@ var userLayer=function(){
 	this.users={};
 }
 userLayer.prototype.add=function (user) {
-	this.remove(user);
+	this._remove(user);
 	var unionId=guid();
 	this.users[unionId]={
 		userName:user.userName,
@@ -16,7 +16,7 @@ userLayer.prototype.add=function (user) {
 	};
 	return this.users[unionId];
 }
-userLayer.prototype.remove=function(user){
+userLayer.prototype._remove=function(user){
 	for(var unionId in this.users)
 	{
 		if(this.users[unionId]["email"]===user.email)
@@ -25,10 +25,20 @@ userLayer.prototype.remove=function(user){
 		}
 	}
 }
-
-userLayer.prototype.auth = function (userName,unionId) {
+userLayer.prototype.logout=function (email,unionId) {
+	var user=this.users[unionId];
+	if(user&&user.email===email)
+	{
+		delete this.users[unionId];
+		return true;
+	}
+	return false;
+}
+userLayer.prototype.auth = function (email,unionId) {
+	if(!email||!unionId)
+		return false;
     var user = this.users[unionId];
-    if (user && user.userName === userName) { 
+    if (user && user.email === email) { 
         return user;
     }
     return false;

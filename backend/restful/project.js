@@ -1,15 +1,15 @@
-﻿//project
+//project
 
 var express = require('express');
 var router = express.Router();
 var projectModel = require('../database/model/projectModel');
 var userLayer = require('../database/layers/userLayer.js');
 //body:userName:,unionId:,projectName
-router.post('/createProject', function (req, res) {
-    var userName = req.body.userName;
+router.post('/project', function (req, res) {
+    var email = req.body.email;
     var unionId = req.body.unionId;
     var projectName = req.body.projectName;
-    var user = userLayer.auth(userName, unionId);
+    var user = userLayer.auth(email, unionId);
     var back = null;
     if (user) {
         var project = new projectModel({
@@ -20,10 +20,10 @@ router.post('/createProject', function (req, res) {
         });
         project.save(function (error, project) {
             if (error) {
-                back = { msg: '保存出错', data: null, code: 14 };
+                back = { msg: '保存出错', data: null, code: STATUS.ERROR.code };
             }
             else {
-                back = { msg: '创建成功', data: project, code: 15 };
+                back = { msg: '创建成功', data: project, code: STATUS.SUCCESS.code };
                 console.log('创建成功', project.name);
             }
             res.json(back);
@@ -31,17 +31,27 @@ router.post('/createProject', function (req, res) {
     }
     else {
         back = {
-            msg: '验证错误', data: null, code: 03,
+            msg: STATUS.AUTH_ERROR.lng, data: null, code:STATUS.AUTH_ERROR.code,
         }
         res.json(back);
     }
 });
 
-router.post('/deleteProject', function (req, res) {
-    var userName = req.body.userName;
+router.delete('/project', function (req, res) {
+    var userName = req.body.email;
     var unionId = req.body.unionId;
-    var projectId = req.body._id;
-   
+    var projectId = req.body.projectId;
+    var user = userLayer.auth(email, unionId);
+    var back = null;
+    if(user){
+        
+    }
+    else {
+        back = {
+            msg: STATUS.AUTH_ERROR.lng, data: null, code:STATUS.AUTH_ERROR.code,
+        }
+        res.json(back);
+    }
 });
 
 
