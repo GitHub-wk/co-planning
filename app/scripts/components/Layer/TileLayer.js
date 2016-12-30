@@ -12,8 +12,7 @@ export class TileLayer extends Layer{
 		this._mouse = new THREE.Vector2();
 	}
 	resetUrl(url){
-		// this.url=url;
-		this.url='http://a.tile.openstreetmap.org/{z}/{x}/{y}.png'
+		this.url=url||'http://a.tile.openstreetmap.org/{z}/{x}/{y}.png';
 	}
 	destoryWorld(){
 		if(this._world)
@@ -49,7 +48,6 @@ export class TileLayer extends Layer{
 		DomEvent.on(canvas,'mousemove',this._mousemoveFn);
 		DomEvent.on(canvas,'mouseup',this._mouseupFn);
 		this._camerachangeFn=Util.bind(function(){
-			console.log('chane');
 			this.refreshTile();
 		},this)
 		this._world.signal.on('CAMERACHANGE',this._camerachangeFn);

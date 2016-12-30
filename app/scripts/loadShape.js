@@ -102,7 +102,6 @@ var building={
 
 // var buildingsBox=jsonBoundBox(building);
 var projection=new MercatorProjection();
-console.log(projection);
 for(var i=0;i<building.features.length;i++){
 	var feature=building.features[i];
 	var geometry=feature.geometry;
