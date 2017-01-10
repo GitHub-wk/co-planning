@@ -32,7 +32,7 @@ export class GuiControl{
 	   		});
 	   		this._lightControlInit=true;
    		}
-         return this;           
+      return this;           
    	}
       /**
        * @description  add Stats monitor
