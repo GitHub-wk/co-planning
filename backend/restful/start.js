@@ -19,7 +19,7 @@ app.use(function(req,res){
 var start=function(port){
 	var port=port||8082;
 	app.listen(port);
-	console.log('restful service start on:'+port);
+	console.log('restful service started on:'+port);
 }
 
 module.exports={
