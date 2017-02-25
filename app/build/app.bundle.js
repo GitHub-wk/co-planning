@@ -10815,7 +10815,9 @@
 	var IMPORTTYPE = exports.IMPORTTYPE = {
 		"BUILDING": 0,
 		"GREEN": 1,
-		"MODEL": 2
+		"MODEL": 2,
+		"LIGHTING": 3,
+		"FORM": 4
 	}; // menuFile.import.component.js
 
 	var ImportItem = exports.ImportItem = function ImportItem(text, type) {

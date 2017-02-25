@@ -10,8 +10,13 @@ var projectSchema = mongoose.Schema( {
     leader: {
         type: String,
         required: true,
+        index:true,
     },
-    resources: [{ type: { type: String, required: true }, url: { type: String, required: true } }],
+    resources: [{ 
+        type: { type: String, required: true }, 
+        url: { type: String, required: true } ,
+        _id:false
+    }],
     members: [String],
     createDate: {
         type: Date,
