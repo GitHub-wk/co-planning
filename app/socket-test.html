@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>socket.io</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<script src="http://cdn.bootcss.com/socket.io/1.7.2/socket.io.min.js"></script>
+	</head>
+	<body>
+	   <h1>test socket.io</h1>
+	   <script type="text/javascript">
+	   		var socket=io.connect('ws://localhost:3000');
+	   		socket.emit('login',{
+	   			email:'1249561679@qq.com',
+	   			unionId:'f11cbf2d-e6cb-4c60-bc10-90b31eb741ba',
+	   			projectId:'58b127ce459b74334090d5f6',
+	   		});
+	   		socket.on('login',function(data){
+	   			console.log(data);
+	   		})
+	   </script>
+	</body>
+</html>
+

@@ -9,7 +9,7 @@ var start=function(databaseName){
     db.on('error', function (){
         console.log('error connect');
     });
-	db.on('open',function(){console.log('connect to：'+databaseName)});
+	db.on('open',function(){console.log('connect to database：'+databaseName)});
 	return db;
 }
 

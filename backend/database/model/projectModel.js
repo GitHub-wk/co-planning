@@ -15,9 +15,14 @@ var projectSchema = mongoose.Schema( {
     resources: [{ 
         type: { type: String, required: true }, 
         url: { type: String, required: true } ,
+        name: { type: String, required: true } ,
+        faceImg: { type: String, required: true } ,
         _id:false
     }],
     members: [String],
+    projectData:{
+        type:Mixed
+    },
     createDate: {
         type: Date,
         default: Date.now
