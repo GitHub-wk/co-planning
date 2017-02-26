@@ -42,9 +42,12 @@ io.on('connection', function(client){
   		}
   	}
   	//if leader leave we remove project for layer
+    // add save projectData to database
+    // TODO
   	if(project.leader===disconnect.leaveMember)
   	{
   		projectLayer.removeProject(client.projectId);
+      //TODO
   	}
   });
 
