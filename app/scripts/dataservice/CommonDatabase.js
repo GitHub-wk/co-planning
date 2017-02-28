@@ -1,6 +1,6 @@
 // CommonDatabase.js
 import axios from 'axios';
-import {getAPI} from '.config.js';
+import {getAPI} from './config.js';
 
 
 var User=function(){
@@ -21,25 +21,25 @@ User.prototype.asynLogin=function(email,psw){
 	 		return user;
 	 	}
 	 	else{
-	 		throw new Error(user);
+	 		throw new Error(user.msg);
 	 	}
 	},function(){
 		throw new Error(null);
 	});
 }
 
-user.prototype.storeUserInLocal=function(){
-
+User.prototype.storeUserInLocal=function(){
+	
 }
 
-user.prototype.getUserFromLocal=function(){
-
+User.prototype.getUserFromLocal=function(){
+	
 }
 
-user.prototype.getUer=function(){
+User.prototype.getUser=function(){
 	return this.data;
 }
-user.prototype.setUser=function(user){
+User.prototype.setUser=function(user){
 	return this.data=user;
 }
 var user=new User();

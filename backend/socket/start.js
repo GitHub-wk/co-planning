@@ -67,7 +67,7 @@ io.on('connection', function(client){
 
   //refresh data (two modal)
   client.on('refresh',function(projectData){
-  	var member=projetLayer.getMemberBySocketId(client.projectId,client.socketId);
+  	var member=projectLayer.getMemberBySocketId(client.projectId,client.id);
   	var project=projectLayer.getProjectById(client.projectId);
   	if(member&&project&&member.level==='r')
   	{
