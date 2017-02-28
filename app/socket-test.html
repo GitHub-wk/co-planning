@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>socket.io</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<script src="http://cdn.bootcss.com/socket.io/1.7.2/socket.io.min.js"></script>
+		<script src="http://cdn.bootcss.com/axios/0.15.3/axios.min.js"></script>
+	</head>
+	<body>
+	   <h1>test socket.io</h1>
+	   <script type="text/javascript">
+	   		 axios.post('http://127.0.0.1:8082/user/login', {
+	   		 	email:'1249561678@qq.com',
+	   		 	password:'19920910wk'
+	   		 }).then(function(data){
+	   		 	var data=data.data;
+	   		 	console.log(data.msg,data);
+	   		 	if(data.data)
+	   		 	{
+	   		 		return data.data
+	   		 	}
+	   		 }).then(function(user){
+	   		 	var socket=io.connect('ws://localhost:3000');
+	   		 	socket.on('connect',function(){
+	   		 		socket.emit('login',{
+			   			email:user.email,
+			   			unionId:user.unionId,
+			   			projectId:'58b127ce459b74334090d5f6',
+		   			});
+	   		 	})
+		   		
+		   		socket.on('login',function(data){
+		   			console.log('login:',data);
+		   		});
+
+		   		socket.on('memberChange',function(data){
+		   			console.log('memberChange',data);
+		   		});
+
+	   		 })
+	   		
+	   </script>
+	</body>
+</html>
+

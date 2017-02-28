@@ -1,0 +1,124 @@
+{
+	"id": "c7cfd38a-03d4-8130-19cd-07f7481aff1b",
+	"name": "user",
+	"description": "user api collection",
+	"order": [
+		"292a5274-2223-89a1-984a-a4bc35b446f3",
+		"1ba7b782-8053-dbaa-a8a7-d0b684cc5239",
+		"657924a9-a9b2-d85b-843d-2657f0cc8891"
+	],
+	"folders": [],
+	"timestamp": 1488000023573,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "1ba7b782-8053-dbaa-a8a7-d0b684cc5239",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://127.0.0.1:8082/user/logout",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "c7cfd38a-03d4-8130-19cd-07f7481aff1b",
+			"data": [
+				{
+					"key": "email",
+					"value": "12495616@qq.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "unionId",
+					"value": "75bf79be-d365-4180-b4f9-695321e3ae5a",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "logout",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1482936909850,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"isFromCollection": true,
+			"collectionRequestId": "0b7d2b56-d94a-e108-82b5-06010a30cd29"
+		},
+		{
+			"id": "292a5274-2223-89a1-984a-a4bc35b446f3",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://127.0.0.1:8082/user/login",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "email",
+					"value": "1249561679@qq.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "19920910wk",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488000228776,
+			"name": "login",
+			"description": "",
+			"collectionId": "c7cfd38a-03d4-8130-19cd-07f7481aff1b",
+			"responses": []
+		},
+		{
+			"id": "657924a9-a9b2-d85b-843d-2657f0cc8891",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://127.0.0.1:8082/user/register",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "c7cfd38a-03d4-8130-19cd-07f7481aff1b",
+			"data": [
+				{
+					"key": "userName",
+					"value": "weikang",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "19920910wk",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "199209@163.com",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "register",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1482936496709,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"isFromCollection": true,
+			"collectionRequestId": "d9423e8f-7fc8-f5ee-7d83-96f7352bf4fb"
+		}
+	]
+}

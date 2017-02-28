@@ -1,0 +1,253 @@
+{
+	"id": "e0b7e81e-6522-75f0-30d4-7163f3dcfb79",
+	"name": "project",
+	"description": "project api collection ",
+	"order": [
+		"0d2ae1c7-28f2-7e92-1087-9360aedd2549",
+		"07b5164e-1275-0947-a06f-19f16c4d38a7",
+		"fb7f53bd-4403-0cac-f21e-b859251e5172",
+		"faf1bdf8-97c3-dd52-973f-a5de6a011155",
+		"2a5f967d-7f2b-52be-6299-01b27a2572e2",
+		"8356cc28-7af1-1719-c076-40bb8738346c",
+		"354b6938-3519-3fc6-94b3-adc4657a165e",
+		"663d9c34-14d6-d62c-af00-a4e6a25e92f8"
+	],
+	"folders": [],
+	"timestamp": 1487999953334,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "07b5164e-1275-0947-a06f-19f16c4d38a7",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://127.0.0.1:8082/project/search",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "email",
+					"value": "1249561679@qq.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "unionId",
+					"value": "fb884842-feb8-4727-96f2-b5e8d518f0bc",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "projectId",
+					"value": "5863777821e49828d4ebd855",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488002198144,
+			"name": "get project detail",
+			"description": "",
+			"collectionId": "e0b7e81e-6522-75f0-30d4-7163f3dcfb79",
+			"responses": []
+		},
+		{
+			"id": "0d2ae1c7-28f2-7e92-1087-9360aedd2549",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://127.0.0.1:8082/projects/search?pageNumber=0",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "email",
+					"value": "1249561679@qq.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "unionId",
+					"value": "19595a38-d73b-4713-be0a-aad1cd9b1e77",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488005395162,
+			"name": "get project list",
+			"description": "",
+			"collectionId": "e0b7e81e-6522-75f0-30d4-7163f3dcfb79",
+			"responses": []
+		},
+		{
+			"id": "2a5f967d-7f2b-52be-6299-01b27a2572e2",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://127.0.0.1:8082/project/resources",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488005396872,
+			"name": "add resources to project",
+			"description": "",
+			"collectionId": "e0b7e81e-6522-75f0-30d4-7163f3dcfb79",
+			"responses": [],
+			"rawModeData": "{\n    \"email\": \"1249561679@qq.com\",\n    \"unionId\": \"19595a38-d73b-4713-be0a-aad1cd9b1e77\",\n    \"projectId\": \"58b127ce459b74334090d5f6\",\n    \"resources\": [\n        {\"type\":\"1\",\"url\":\"21038921.json\"}\n    ]\n}"
+		},
+		{
+			"id": "354b6938-3519-3fc6-94b3-adc4657a165e",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://127.0.0.1:8082/project",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "email",
+					"value": "1249561679@qq.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "unionId",
+					"value": "8a2fe0dc-7f40-4fe8-b433-81bbaba139bf",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "projectName",
+					"value": "project2",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488005170717,
+			"name": "add project",
+			"description": "",
+			"collectionId": "e0b7e81e-6522-75f0-30d4-7163f3dcfb79",
+			"responses": []
+		},
+		{
+			"id": "663d9c34-14d6-d62c-af00-a4e6a25e92f8",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://127.0.0.1:8082/project",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "e0b7e81e-6522-75f0-30d4-7163f3dcfb79",
+			"data": [
+				{
+					"key": "email",
+					"value": "1249561679@qq.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "unionId",
+					"value": "8a2fe0dc-7f40-4fe8-b433-81bbaba139bf",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "projectId",
+					"value": "58b12675647cc529a421c218",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "delete project",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1488005162473,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "8356cc28-7af1-1719-c076-40bb8738346c",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://127.0.0.1:8082/project/resources",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "e0b7e81e-6522-75f0-30d4-7163f3dcfb79",
+			"data": [],
+			"dataMode": "raw",
+			"name": "remove resource from project",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1488004580774,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n    \"email\": \"1249561679@qq.com\",\n    \"unionId\": \"ae50bc25-8054-4670-b1b2-fefb22ee894c\",\n    \"projectId\": \"5863777821e49828d4ebd855\",\n    \"resources\": [\n        {\"type\":\"1\",\"url\":\"21038921.json\"}\n    ]\n}"
+		},
+		{
+			"id": "faf1bdf8-97c3-dd52-973f-a5de6a011155",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://127.0.0.1:8082/project/members",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "e0b7e81e-6522-75f0-30d4-7163f3dcfb79",
+			"data": [],
+			"dataMode": "raw",
+			"name": "remove project members",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1488003090930,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n    \"email\": \"1249561679@qq.com\",\n    \"unionId\": \"321a4efc-3c6d-4917-aa76-a422f4d61211\",\n    \"projectId\": \"5863777821e49828d4ebd855\",\n    \"members\": [\n        \"ads\"\n    ]\n}"
+		},
+		{
+			"id": "fb7f53bd-4403-0cac-f21e-b859251e5172",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://127.0.0.1:8082/project/members",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488002995781,
+			"name": "add members to project",
+			"description": "",
+			"collectionId": "e0b7e81e-6522-75f0-30d4-7163f3dcfb79",
+			"responses": [],
+			"rawModeData": "{\n    \"email\": \"1249561679@qq.com\",\n    \"unionId\": \"321a4efc-3c6d-4917-aa76-a422f4d61211\",\n    \"projectId\": \"5863777821e49828d4ebd855\",\n    \"members\": [\n        \"1249561678@qq.com\",\"ads\",\"sad\",\"sadd1\"\n    ]\n}"
+		}
+	]
+}
