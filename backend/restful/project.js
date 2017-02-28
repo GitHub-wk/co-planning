@@ -236,6 +236,8 @@ router.post('/project/search',function(req,res){
                 back={msg:'获取项目详情失败',data:null,code:STATUS.ERROR.code};
             }
             else{
+                //this api can not get projectData;
+                delete project.projectData;
                 back={msg:'获取项目详情成功',data:project,code:STATUS.SUCCESS.code};
             }
             res.json(back);

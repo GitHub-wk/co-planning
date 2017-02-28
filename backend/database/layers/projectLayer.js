@@ -26,11 +26,11 @@ projectLayer.prototype.getProject=function(projectId,email){
 	else{
 		projectModel.findById(projectId,function(error,proj){
 			if(error||!proj){
-				defer.reject({msg:'error find data'});
+				defer.reject({msg:'error find data',data:null});
 			}
 			else{
 				email===proj.leader?defer.resolve(scope._add(proj))
-					:defer.resolve({msg:'you should let leader come first',data:null});
+					:defer.reject({msg:'you should let leader login first',data:null});
 			}
 		})
 	}
@@ -41,6 +41,27 @@ projectLayer.prototype.removeProject=function(projectId){
 	delete this.projects[projectId];
 }
 
+projectLayer.prototype.saveProjectDataToDataBase=function(projectId){
+	var defer=Q.defer();
+	var project=this.getProjectById(projectId);
+	if(project)
+	{
+		projectModel.findByIdAndUpdate(projectId,{$set:{projectData:project.projectData}},function(error,project){
+			if(error)
+			{
+				defer.reject({msg:'database operation error'});
+			}
+			else
+			{
+				defer.resolve({msg:'save projectData to database success'});
+			}
+		});
+	}
+	else{
+		defer.reject({msg:'can not find project to save in projectLayer'});
+	}
+	return defer.promise;
+}
 projectLayer.prototype.removeMemberSocketId=function(projectId,socketId){
 	if(!projectId||!socketId)
 	{
@@ -106,6 +127,8 @@ projectLayer.prototype._add=function(project){
 			socketId:null,
 		}
 	}
+	console.log('add project:',project._id);
+	console.log(this.projects);
 	return proj;
 }
 

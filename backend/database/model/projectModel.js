@@ -16,13 +16,11 @@ var projectSchema = mongoose.Schema( {
         type: { type: String, required: true }, 
         url: { type: String, required: true } ,
         name: { type: String, required: true } ,
-        faceImg: { type: String, required: true } ,
+        faceImg: { type: String} ,
         _id:false
     }],
     members: [String],
-    projectData:{
-        type:Mixed
-    },
+    projectData:mongoose.Schema.Types.Mixed,
     createDate: {
         type: Date,
         default: Date.now

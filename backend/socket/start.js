@@ -2,10 +2,10 @@
 var server = require('http').createServer();
 var io = require('socket.io')(server);
 var userLayer = require('../database/layers/userLayer.js');
-var projectModel = require('../database/model/projectModel');
 var projectLayer=require('../database/layers/projectLayer.js');
+var connectCount=0;
 io.on('connection', function(client){
-
+  console.log('has connetion:',++connectCount);
 	//member login leader should first login
   client.on('login', function(data){
   	var user=userLayer.auth(data.email,data.unionId);
@@ -17,14 +17,27 @@ io.on('connection', function(client){
   		project.members[data.email].socketId=client.id;
   		client.projectId=data.projectId;
   		client.emit('login',{msg:'获取成功',data:project,});
+
+      //tell other members
+      for(var memberId in project.members)
+      {
+        var member=project.members[memberId];
+        if(member.socketId&&member.socketId!==client.id)
+        {
+          io.sockets.sockets[member.socketId].emit('memberChange',{
+            msg:'成员加入:'+data.email,
+            data:project.members});
+        }
+      }
   	},function(error){
-  		client.emit(error);
+  		client.emit('login',error);
   	});
   });
 
 
   //if leader disconnect delete project
   client.on('disconnect', function(){
+    console.log('leave a connect:',--connectCount);
   	var disconnect=projectLayer.removeMemberSocketId(client.projectId,client.id);
   	if(!disconnect){
   		return false;
@@ -36,7 +49,7 @@ io.on('connection', function(client){
   		var member=project.members[memberId];
   		if(member.socketId&&member.socketId!==client.id)
   		{
-  			io.sockets.sockets[member.socketId].emit('memberLeave',{
+  			io.sockets.sockets[member.socketId].emit('memberChange',{
   				msg:'成员离开:'+disconnect.leaveMember,
   				data:project.members});
   		}
@@ -46,8 +59,8 @@ io.on('connection', function(client){
     // TODO
   	if(project.leader===disconnect.leaveMember)
   	{
+      projectLayer.saveProjectDataToDataBase(client.projectId);
   		projectLayer.removeProject(client.projectId);
-      //TODO
   	}
   });
 
@@ -80,9 +93,10 @@ io.on('connection', function(client){
 
   //auth to members 'rw'
   client.on('auth',function(){
-
+    
   });
 });
+
 
 var start=function(port){
 	var port=port||3000
