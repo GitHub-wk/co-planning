@@ -7,14 +7,14 @@
 import {Util} from '../core/core.js';
 
 var HTTPMETHOD={
-	"GET":1,
-	"POST":2,
-	"PUT":3,
-	"DELETE":4
+	"GET":'get',
+	"POST":'post',
+	"PUT":'put',
+	"DELETE":'delete'
 }
 var socketUrl='ws://localhost:3000';
 
-var _baseUrl="http://localhost:8082";
+var baseUrl="http://localhost:8082";
 var _apiList={
 	Register:{
 		url:baseUrl+'/user/register',
@@ -57,7 +57,7 @@ var _apiList={
 		method:HTTPMETHOD.POST
 	},
 	GetProjectDetail:{
-		url:baseUrl+'/project/search'
+		url:baseUrl+'/project/search',
 		method:HTTPMETHOD.POST
 	}
 }
