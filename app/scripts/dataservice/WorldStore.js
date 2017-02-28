@@ -6,7 +6,7 @@
 import AppDispatcher from '../components/AppDispatcher.js';
 import {EventEmitter,assign} from '../core/core.js';
 import {BUILDING_CONSTS} from './CONSTANTS.js';
-
+import {buildingTOJSON} from '../components/commonTool/buildingTool.js';
 
 var _buildings = {
   'VERSION':'0.0.1'
@@ -63,6 +63,20 @@ var BuildingStore = assign({}, EventEmitter.prototype, {
       (key!=='VERSION')&&(buildings.push(_buildings[key].mesh));
     }
     return buildings;
+  },
+  toJson:function(){
+    var geoJson={
+      "type": "FeatureCollection",                                                                               
+      "features": []}
+    for(var key in _buildings)
+    {
+      var building=_buildings[key];
+      if(key!=='VERSION'&&!building.remove)
+      {
+        geoJson.features.push(buildingTOJSON(building.mesh));
+      }
+    }
+    return geoJson;
   },
   dispatcherIndex: AppDispatcher.register(function(payload) {
     var action = payload.action;

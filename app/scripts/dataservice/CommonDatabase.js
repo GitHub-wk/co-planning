@@ -1,6 +1,6 @@
 // CommonDatabase.js
 import axios from 'axios';
-import {getAPI} from '.config.js';
+import {getAPI} from './config.js';
 
 
 var User=function(){
@@ -29,11 +29,11 @@ User.prototype.asynLogin=function(email,psw){
 }
 
 user.prototype.storeUserInLocal=function(){
-
+	
 }
 
 user.prototype.getUserFromLocal=function(){
-
+	
 }
 
 user.prototype.getUer=function(){

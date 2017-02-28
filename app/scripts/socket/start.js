@@ -3,15 +3,18 @@ import axios from 'axios';
 import io from 'socket.io-client';
 import {user} from '../dataservice/CommonDatabase.js';
 import {socketUrl} from './config.js';
+import {BuildingAction} from '../dataservice/WorldAction.js';
+
 var user=user.getUser();
 var socket=io.connect(socketUrl);
 
+
 socket.on('connect',function(){
 	socket.emit('login',{
-	email:user.email,
-	unionId:user.unionId,
-	projectId:user.joinedProjectId,
-});
+		email:user.email,
+		unionId:user.unionId,
+		projectId:user.joinedProjectId,
+	});
 });
 
 socket.on('login',function(data){
@@ -21,3 +24,11 @@ socket.on('login',function(data){
 socket.on('memberChange',function(data){
 	console.log('memberChange',data);
 });
+
+socket.on('refresh',function(project){
+	console.log(project);
+});
+export{
+	socket,
+}
+
