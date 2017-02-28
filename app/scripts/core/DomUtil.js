@@ -47,6 +47,7 @@ var DomUtil = {
 	},
 	createElement:function(tagName,className,innerHtml)
 	{
+		console.log(this);
 		var el = document.createElement(tagName);
 		el.className = className || '';
 		el.innerHTML=innerHtml||'';
