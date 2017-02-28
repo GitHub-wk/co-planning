@@ -4,8 +4,6 @@ export const IMPORTTYPE={
 	"BUILDING":0,
 	"GREEN": 1,
 	"MODEL": 2,
-	"LIGHTING": 3,
-	"FORM": 4
 }
 export class ImportItem{
 	constructor(text,type){

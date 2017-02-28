@@ -6,6 +6,7 @@ import {GuiControl} from './components/guiControl.component.js';
 import {DomUtil,Draggable,DomEvent} from './core/core.js';
 import {BuildingStore} from './dataservice/WorldStore';
 import {cameraControl} from './plugin/cameraControl.js';
+import {Solar} from './components/Solar.js';
 
 export default class worldFactory{
 	static generateDefaultWorld(){
@@ -16,6 +17,7 @@ export default class worldFactory{
 	    canvas.width=canvas.parentNode.clientWidth;
 	    var renderer = new THREE.WebGLRenderer({canvas:canvas});
 	    renderer.shadowMapEnabled = true;
+	    renderer.shadowMapSoft = true;
 	    // scene instance
 	    var scene = new THREE.Scene();
 	    scene.background = new THREE.Color(0x9999ff);
@@ -34,6 +36,13 @@ export default class worldFactory{
 	    var pointLightHelper=new THREE.PointLightHelper(pointLight,1);
 	    var amLight=new THREE.AmbientLight(0xffffff,0.8);
 
+
+	    //TODO  test solar angle calculate
+	    var now = new Date();
+	    var solar = new Solar();
+	    //DevTools,should be deleted in master
+	    var lightShadowCamera = new THREE.CameraHelper(solar.light.shadow.camera);
+
 	    //gui-control
 	    var  guiControl=new GuiControl();
 	    //console.log(guiControl);
@@ -45,8 +54,8 @@ export default class worldFactory{
 	    //orbit-control
 	    // var orbit=new THREE.OrbitControls(world.camera, world.renderer.domElement);
 	    var orbit=new cameraControl(world.camera, world.renderer.domElement);  
-	    world.addToScene(pointLight,pointLightHelper,amLight);
-
+	    world.addToScene(solar.light,solar.light.target,amLight,lightShadowCamera);
+	    solar.showLight(new Date(2017,1,9,6,40),{ lat: 30.530716753548138, lng: 114.35120420404286 });
 	 
 	    //re-render world
 	    globalEvent.on('requestAmimationFrame',function() {

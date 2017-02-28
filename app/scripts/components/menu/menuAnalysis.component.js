@@ -1,6 +1,6 @@
  // menu.importdata.component.js
  import {DomEvent,DomUtil} from '../../core/core.js';
- import {ImportItem,IMPORTTYPE} from './menuFile.import.component.js';
+ import {AnalysisItem, ANALYSISTYPE} from './menuAnalysis.import.component.js';
 
 var lang = {
 	"ANALYSIS": "分析",
@@ -9,14 +9,25 @@ var lang = {
 	"FORM": "小区报表"
 };
 
-export default class menuAnalysis{
+
+export default class MenuAnalysis{
 	constructor(){
 		this.element = DomUtil.createElement('div','menu-bar', lang.ANALYSIS);
 
-		var menuBar = DomUtil.createElement('div','menu-file',this.element);
-		var importLighting = new ImportItem(lang.LIGHTING， IMPORTTYPE.LIGHTING);
-		var importForm = new ImportItem(lang.FORM, IMPORTTYPE.FORM);
+		var menuBar = DomUtil.create('div','menu-file',this.element);
+		var importLighting = new AnalysisItem(lang.LIGHTING, ANALYSISTYPE.LIGHTING, lighting);
+		var importForm = new AnalysisItem(lang.FORM, ANALYSISTYPE.FORM, form);
 
-		DomUtil.appendChild(menuFile,[importLighting.element, importForm.element]);
+		DomUtil.appendChild(menuBar,[importLighting.element, importForm.element]);
 	}
+}
+
+
+//analysisFunction.js
+function lighting(){
+	console.log('lighting function clicked');
+}
+
+function form(){
+	console.log('form function clicked');
 }
