@@ -5,6 +5,7 @@
  * @description public config
  */
 import {Util} from '../core/core.js';
+
 var HTTPMETHOD={
 	"GET":1,
 	"POST":2,
@@ -63,9 +64,11 @@ var _apiList={
 
 var getAPI=function(name){
 	//TODO formate
+	
 	return _apiList[name];
 }
 
 export{
-
+	getAPI,
+	socketUrl,
 }

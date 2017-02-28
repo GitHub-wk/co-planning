@@ -21,10 +21,10 @@ router.post('/project', function (req, res) {
         });
         project.save(function (error, project) {
             if (error) {
-                back = { msg: '保存出错', data: null, code: STATUS.ERROR.code };
+                back = { msg: '保存出错', data: null, code: STATUS.ERROR.code ,status:STATUS.ERROR.code};
             }
             else {
-                back = { msg: '创建成功', data: project, code: STATUS.SUCCESS.code };
+                back = { msg: '创建成功', data: project, code: STATUS.SUCCESS.code ,status:STATUS.SUCCESS.code};
                 console.log('创建成功', project.name);
             }
             res.json(back);
@@ -32,7 +32,7 @@ router.post('/project', function (req, res) {
     }
     else {
         back = {
-            msg: STATUS.AUTH_ERROR.lng, data: null, code:STATUS.AUTH_ERROR.code,
+            msg: STATUS.AUTH_ERROR.lng, data: null, code:STATUS.AUTH_ERROR.code,status:STATUS.ERROR.code
         }
         res.json(back);
     }
@@ -49,18 +49,18 @@ router.delete('/project', function (req, res) {
         projectModel.remove({_id:projectId,leader:email},function(error,project){
             if(error)
             {
-                back={msg:'删除项目出错',data:null,code:STATUS.ERROR.code};
+                back={msg:'删除项目出错',data:null,code:STATUS.ERROR.code,status:STATUS.ERROR.code};
             }
             else{
 
-                back={msg:'删除项目成功',data:project,code:STATUS.SUCCESS.code};
+                back={msg:'删除项目成功',data:project,code:STATUS.SUCCESS.code,status:STATUS.SUCCESS.code};
             }
             res.json(back);
         })
     }
     else {
         back = {
-            msg: STATUS.AUTH_ERROR.lng, data: null, code:STATUS.AUTH_ERROR.code,
+            msg: STATUS.AUTH_ERROR.lng, data: null, code:STATUS.AUTH_ERROR.code,status:STATUS.ERROR.code
         }
         res.json(back);
     }
@@ -83,18 +83,18 @@ router.post('/project/members',function(req,res){
             if(error)
             {
                 console.log(error);
-                back={msg:'添加成员出错',data:null,code:STATUS.ERROR.code};
+                back={msg:'添加成员出错',data:null,code:STATUS.ERROR.code,status:STATUS.ERROR.code};
             }
             else{
 
-                back={msg:'添加成员成功',data:project,code:STATUS.SUCCESS.code};
+                back={msg:'添加成员成功',data:project,code:STATUS.SUCCESS.code,status:STATUS.SUCCESS.code};
             }
             res.json(back);
         })
     }
     else {
         back = {
-            msg: STATUS.AUTH_ERROR.lng, data: null, code:STATUS.AUTH_ERROR.code,
+            msg: STATUS.AUTH_ERROR.lng, data: null, code:STATUS.AUTH_ERROR.code,status:STATUS.ERROR.code
         }
         res.json(back);
     }
@@ -116,18 +116,18 @@ router.delete('/project/members',function(req,res){
         }},function(error,project){
             if(error)
             {
-                back={msg:'移除成员出错',data:null,code:STATUS.ERROR.code};
+                back={msg:'移除成员出错',data:null,code:STATUS.ERROR.code,status:STATUS.ERROR.code};
             }
             else{
 
-                back={msg:'移除成员成功',data:project,code:STATUS.SUCCESS.code};
+                back={msg:'移除成员成功',data:project,code:STATUS.SUCCESS.code,status:STATUS.SUCCESS.code};
             }
             res.json(back);
         })
     }
     else {
         back = {
-            msg: STATUS.AUTH_ERROR.lng, data: null, code:STATUS.AUTH_ERROR.code,
+            msg: STATUS.AUTH_ERROR.lng, data: null, code:STATUS.AUTH_ERROR.code,status:STATUS.ERROR.code
         }
         res.json(back);
     }
@@ -147,18 +147,18 @@ router.post('/project/resources',function(req,res){
         }},function(error,project){
             if(error)
             {
-                back={msg:'添加资源出错',data:null,code:STATUS.ERROR.code};
+                back={msg:'添加资源出错',data:null,code:STATUS.ERROR.code,status:STATUS.ERROR.code};
             }
             else{
 
-                back={msg:'添加资源成功',data:project,code:STATUS.SUCCESS.code};
+                back={msg:'添加资源成功',data:project,code:STATUS.SUCCESS.code,status:STATUS.SUCCESS.code};
             }
             res.json(back);
         })
     }
     else {
         back = {
-            msg: STATUS.AUTH_ERROR.lng, data: null, code:STATUS.AUTH_ERROR.code,
+            msg: STATUS.AUTH_ERROR.lng, data: null, code:STATUS.AUTH_ERROR.code,status:STATUS.ERROR.code
         }
         res.json(back);
     }
@@ -178,18 +178,18 @@ router.delete('/project/resources',function(req,res){
         }},function(error,project){
             if(error)
             {
-                back={msg:'移除资源出错',data:null,code:STATUS.ERROR.code};
+                back={msg:'移除资源出错',data:null,code:STATUS.ERROR.code,status:STATUS.ERROR.code};
             }
             else{
 
-                back={msg:'移除资源成功',data:project,code:STATUS.SUCCESS.code};
+                back={msg:'移除资源成功',data:project,code:STATUS.SUCCESS.code,status:STATUS.SUCCESS.code};
             }
             res.json(back);
         })
     }
     else {
         back = {
-            msg: STATUS.AUTH_ERROR.lng, data: null, code:STATUS.AUTH_ERROR.code,
+            msg: STATUS.AUTH_ERROR.lng, data: null, code:STATUS.AUTH_ERROR.code,status:STATUS.ERROR.code
         }
         res.json(back);
     }
@@ -206,18 +206,18 @@ router.post('/projects/search',function(req,res){
         projectModel.find({leader:email},null,{skip:5*pageNmber,limit:5},function(error,projects){
             if(error)
             {
-                back={msg:'获取项目列表出错',data:null,code:STATUS.ERROR.code};
+                back={msg:'获取项目列表出错',data:null,code:STATUS.ERROR.code,status:STATUS.ERROR.code};
             }
             else{
 
-                back={msg:'获取项目列表成功',data:projects,code:STATUS.SUCCESS.code};
+                back={msg:'获取项目列表成功',data:projects,code:STATUS.SUCCESS.code,status:STATUS.SUCCESS.code};
             }
             res.json(back);
         });
     }
     else{
         back = {
-            msg: STATUS.AUTH_ERROR.lng, data: null, code:STATUS.AUTH_ERROR.code,
+            msg: STATUS.AUTH_ERROR.lng, data: null, code:STATUS.AUTH_ERROR.code,status:STATUS.ERROR.code
         }
         res.json(back);
     }
@@ -233,19 +233,19 @@ router.post('/project/search',function(req,res){
         projectModel.findOne({_id:projectId,leader:email},function(error,project){
             if(error)
             {
-                back={msg:'获取项目详情失败',data:null,code:STATUS.ERROR.code};
+                back={msg:'获取项目详情失败',data:null,code:STATUS.ERROR.code,status:STATUS.ERROR.code};
             }
             else{
                 //this api can not get projectData;
                 delete project.projectData;
-                back={msg:'获取项目详情成功',data:project,code:STATUS.SUCCESS.code};
+                back={msg:'获取项目详情成功',data:project,code:STATUS.SUCCESS.code,status:STATUS.SUCCESS.code};
             }
             res.json(back);
         })
     }
     else{
          back = {
-            msg: STATUS.AUTH_ERROR.lng, data: null, code:STATUS.AUTH_ERROR.code,
+            msg: STATUS.AUTH_ERROR.lng, data: null, code:STATUS.AUTH_ERROR.code,status:STATUS.ERROR.code
         }
         res.json(back);
     }
