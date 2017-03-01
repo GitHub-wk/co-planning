@@ -15,6 +15,9 @@ import {LayerCollection} from './components/Layer/LayerCollection.js';
 import {Layer} from './components/Layer/Layer.js';
 import {SolarAngle} from './geo/SolarAngle.js';
 
+import {userModal} from './ModalDefaultInit.js';
+
+
 var world=worldFactory.generateDefaultWorld();
 console.log(world);
 
@@ -86,5 +89,8 @@ DomEvent.addEventListener(window,'resize',function(e){
     requestAnimationFrame(render);
     globalEvent.emit('requestAmimationFrame');
 })();
+
+
+
 
 
