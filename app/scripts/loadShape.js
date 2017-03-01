@@ -1,5 +1,4 @@
 // loadShape.js
-import {jsonBoundBox} from './components/commonTool/jsonTool.js';
 import {BuildingAction} from './dataservice/WorldAction.js';
 import {createBuilding} from './components/commonTool/buildingTool.js';
 import * as THREE from 'threejs';
@@ -100,7 +99,6 @@ var building={
 }
 
 
-// var buildingsBox=jsonBoundBox(building);
 var projection=new MercatorProjection();
 for(var i=0;i<building.features.length;i++){
 	var feature=building.features[i];
