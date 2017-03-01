@@ -4,8 +4,6 @@
  * @date 2016/11/28
  * @description public config
  */
-import {Util} from '../core/core.js';
-
 var HTTPMETHOD={
 	"GET":'get',
 	"POST":'post',

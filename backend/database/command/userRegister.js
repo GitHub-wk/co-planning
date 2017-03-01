@@ -18,6 +18,7 @@ function userRegister(opts) {
             defer.reject(back);
         }
         else {
+            console.log('user register:',user.email);
             back = { msg: STATUS.REGISTER_SUCCESS.lng, data: user, code: STATUS.REGISTER_SUCCESS.code ,status:STATUS.SUCCESS.code};
             defer.resolve(back);
         }

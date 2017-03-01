@@ -1,11 +1,10 @@
 // CommonDatabase.js
 import axios from 'axios';
 import {getAPI} from './config.js';
-
+import Util from '../core/Util.js';
 
 var User=function(){
 	this.data=null;
-
 }
 User.prototype.asynLogin=function(email,psw){
 	var userAPI=getAPI('Login');
@@ -40,6 +39,7 @@ User.prototype.getUser=function(){
 	return this.data;
 }
 User.prototype.setUser=function(user){
+	this.storeUserInLocal();
 	return this.data=user;
 }
 var user=new User();
