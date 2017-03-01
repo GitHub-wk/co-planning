@@ -34,7 +34,7 @@ var createBuilding=function(shape,properties){
     {
     	buildingMesh.scale.copy((new THREE.Vector3()).fromArray(properties.SCALE));
     }
-    buildingMesh.position.setZ(buildingMesh.position.z+properties.STARTHEIGHT||0);
+    buildingMesh.position.setZ(buildingMesh.position.z+(properties?properties.STARTHEIGHT||0:0));
     resetBuildingFaceUV(geometry,buildingMesh.userData.floorNum,1);
     return buildingMesh;
 }

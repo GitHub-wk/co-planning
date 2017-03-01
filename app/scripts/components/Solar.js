@@ -7,10 +7,10 @@ var dist = 10000;
 var axios = require('axios');
 axios.get('../../index.html')
   .then(function (response) {
-    console.log(response);
+    //console.log(response);
   })
   .catch(function (response) {
-    console.log(response);
+    //console.log(response);
   });
 
   var path = require('path');
