@@ -117,7 +117,7 @@ export default class InfoObject{
 		this.updateUI=function(object){
 			if(object){
 				Util.log('updateUI in InfoObject.component.js');
-				objectType.setValue( object.type );
+				objectType.setValue( object.userData.name||object.name||object.type );
 
 				objectPositionX.setValue( object.position.x );
 				objectPositionY.setValue( object.position.y );
