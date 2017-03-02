@@ -1,6 +1,7 @@
 // CommonDatabase.js
 import axios from 'axios';
 import {getAPI} from './config.js';
+import Util from '../core/Util.js';
 
 
 var User=function(){
@@ -42,5 +43,17 @@ User.prototype.getUser=function(){
 User.prototype.setUser=function(user){
 	return this.data=user;
 }
+
 var user=new User();
-export{user};
+
+function asynData(apiName, data={}){
+	return axios[apiName.method](apiName.url,data)
+	.then(function(data){
+		console.log(data);
+		return data;
+	},function(){
+		throw new Error('failed to get data from server');
+	})
+}
+
+export{user, asynData ,getAPI};
