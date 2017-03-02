@@ -12,6 +12,7 @@ function userLogin(opts){
             defer.reject(back);
         }
 		else{
+			console.log('user login:',user.email);
 			var user=userLayer.add(user);
 			back={msg:STATUS.LOGIN_SUCCESS.lng,data:user,code:STATUS.LOGIN_SUCCESS.code,status:STATUS.SUCCESS.code};
 			defer.resolve(back);

@@ -77,7 +77,7 @@ world.signal.on(DRAWSIGNAL.WILLDRAW,function(){
 world.signal.on(DRAWSIGNAL.DRAWDONE,function(){
 	infoInit.turnONStatus();
 });
-require('./loadShape.js');
+//require('./loadShape.js');
 
 
 

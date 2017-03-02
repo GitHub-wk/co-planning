@@ -1,16 +1,22 @@
 <!-- welcome.html -->
 <!-- for login/register -->
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title>3DGIS in co-planning</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	</head>
-	<body>
-	    <div class="wrapper">
-	    	
-	    </div>	
-	</body>
-</html>
-
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Welcome!</title>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">  
+    <link rel="stylesheet" type="text/css" href="./css/welcome.css"/>  
+</head>  
+<body> 
+    <div id="login">  
+        <h1>Login</h1>  
+        <form onsubmit="return false" id="login-form">  
+            <input type="text" required="required" placeholder="用户名" name="user"></input>  
+            <input type="password" required="required" placeholder="密码" name="psw"></input>  
+            <button class="but" type="sumit" id='sumit-btn'>登录</button>  
+        </form>  
+    </div>
+    <script src="./welcome.bundle.js"></script>	  
+</body>  
+</html> 

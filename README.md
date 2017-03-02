@@ -1,4 +1,4 @@
 # co-planning
 using threejs to co-planning
-##only for xr##
+##only for dev##
 

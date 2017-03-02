@@ -1,9 +1,16 @@
 var webpack = require("webpack");
 module.exports = {
-     entry: './entry.js',
+     entry: {
+     	//map
+     	app:'./entry.js',
+     	//welcome
+     	welcome:'./welcome_entry.js',
+     	//user
+     	user:'./user_entry.js',
+     },
      output: {
          path: './build',
-         filename: 'app.bundle.js'
+         filename: '[name].bundle.js'
      },
 	module: {
 		loaders: [

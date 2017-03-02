@@ -105,6 +105,19 @@ var BuildingStore = assign({}, EventEmitter.prototype, {
           console.log(command.name);
           BuildingStore.emit(BUILDING_CONSTS.REMOVE,command);
         }
+        break;
+      case BUILDING_CONSTS.REMOVEALL:
+        for(var key in _buildings)
+        {
+          if(key!=='VERSION') 
+          {
+            var buildingMesh=_buildings[key].mesh;
+            buildingMesh.parent.remove(buildingMesh);
+            delete _buildings[key];
+          }
+        }
+        break;
+
     }
     return true; // No errors. Needed by promise in Dispatcher.
   }),

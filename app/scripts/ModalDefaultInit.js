@@ -4,6 +4,7 @@ import resourceModal from './components/modal/resource.component.js';
 import ko from 'knockout';
 
 
+
 var bodyEl = DomUtil.getById("wrapper");
 
 var dataarr = [{
@@ -37,5 +38,4 @@ modal.signal.on('addResource',function(res){
 })
 
 export {modal};
-
 

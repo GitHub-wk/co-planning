@@ -127,8 +127,7 @@ projectLayer.prototype._add=function(project){
 			socketId:null,
 		}
 	}
-	console.log('add project:',project._id);
-	console.log(this.projects);
+	console.log('add project to ProjectLayer:',project._id);
 	return proj;
 }
 

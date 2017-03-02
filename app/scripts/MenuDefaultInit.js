@@ -24,5 +24,6 @@ var refreshEl= DomUtil.createElement('span','menu-bar','刷新');
 DomUtil.appendChild(menuEle,refreshEl);
 DomEvent.on(refreshEl,'click',function(){
 	console.log('refersh click');
-	socket.emit('refresh',BuildingStore.toJson());
+	var json=BuildingStore.toJson();
+	socket.emit('refresh',json);
 });

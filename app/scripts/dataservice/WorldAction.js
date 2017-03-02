@@ -20,5 +20,8 @@ var BuildingAction={
 	command:function(building){
 		AppDispatcher.handleViewAction({actionType:BUILDING_CONSTS.COMMAND,message:building});
 	},
+	removeAll:function(){
+		AppDispatcher.handleViewAction({actionType:BUILDING_CONSTS.REMOVEALL,message:''});
+	},
 }
 export {BuildingAction};

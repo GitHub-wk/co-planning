@@ -3,10 +3,9 @@ import axios from 'axios';
 import {getAPI} from './config.js';
 import Util from '../core/Util.js';
 
-
+var userLocalName='$$user';
 var User=function(){
 	this.data=null;
-
 }
 User.prototype.asynLogin=function(email,psw){
 	var userAPI=getAPI('Login');
@@ -30,18 +29,21 @@ User.prototype.asynLogin=function(email,psw){
 }
 
 User.prototype.storeUserInLocal=function(){
-	
+	Util.storeData(userLocalName,this.data);
 }
 
 User.prototype.getUserFromLocal=function(){
-	
+	this.data=Util.getData(userLocalName);
+	return this.data;
 }
 
 User.prototype.getUser=function(){
 	return this.data;
 }
 User.prototype.setUser=function(user){
-	return this.data=user;
+	this.data=user;
+	this.storeUserInLocal();
+	return this.data;
 }
 
 var user=new User();
