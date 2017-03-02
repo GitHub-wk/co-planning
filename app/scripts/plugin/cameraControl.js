@@ -66,7 +66,6 @@ function cameraControl(object,dom){
 		scope.camera.updateMatrixWorld(true);
 	}
 	var keydownFn=function(event) {
-		console.log(event);
 		 switch (event.keyCode) {
             case scope.keys.UP:
                 pan(0, 10);

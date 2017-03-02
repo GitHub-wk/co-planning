@@ -15,6 +15,13 @@ var STATUS={
 var LNG={
 	
 }
+
+var RESOURCETYPE={
+	"BUILDING":1,
+	"GREEN":2,
+	"MODAL":3,
+	"TEXTURE":4,
+}
 module.exports={
 	STATUS:STATUS,
 }

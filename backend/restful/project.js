@@ -227,6 +227,7 @@ router.post('/project/search',function(req,res){
     var email=req.body.email;
     var unionId=req.body.unionId;
     var projectId=req.body.projectId;
+    var type=req.query.type;
     var user=userLayer.auth(email,unionId);
     var back=null;
     if(user){
@@ -238,6 +239,19 @@ router.post('/project/search',function(req,res){
             else{
                 //this api can not get projectData;
                 delete project.projectData;
+                if(type!==undefined)
+                {
+                    var projectResources=project.resources;
+                    var chooseResources=[];
+                    for(var i=0;i<projectResources.length;i++)
+                    {
+                        if(projectResources[i].type===type)
+                        {
+                            chooseResources.push(projectResources[i]);                           
+                        }
+                    }
+                    project.resources=chooseResources;
+                }
                 back={msg:'获取项目详情成功',data:project,code:STATUS.SUCCESS.code,status:STATUS.SUCCESS.code};
             }
             res.json(back);
