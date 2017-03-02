@@ -12,9 +12,9 @@ var HTTPMETHOD={
 	"PUT":'put',
 	"DELETE":'delete'
 }
-var socketUrl='ws://localhost:3000';
+var socketUrl='ws://172.16.102.186:3000';
 
-var baseUrl="http://localhost:8082";
+var baseUrl="http://172.16.102.186:8082";
 var _apiList={
 	Register:{
 		url:baseUrl+'/user/register',

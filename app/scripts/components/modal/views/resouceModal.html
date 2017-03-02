@@ -1,0 +1,25 @@
+<div class="user-modal">
+    <div class="modal-head">建筑资源列表</div>
+    <div class="data-modal-body">
+        <table>
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>resourceUrl</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: dataArr">
+                <tr>
+                    <td>
+                        <div data-bind="value: name" />
+                    </td>
+                    <td>
+                       <div data-bind="value: url" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- <h2>Hello, <span data-bind="text: fullName"> </span>!</h2> -->
+    </div>
+</div>
