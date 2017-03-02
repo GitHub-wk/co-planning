@@ -231,7 +231,7 @@ router.post('/project/search',function(req,res){
     var back=null;
     if(user){
         projectModel.findOne({_id:projectId,leader:email},function(error,project){
-            if(error)
+            if(error&&project)
             {
                 back={msg:'获取项目详情失败',data:null,code:STATUS.ERROR.code,status:STATUS.ERROR.code};
             }

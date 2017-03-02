@@ -2,9 +2,9 @@ var webpack = require("webpack");
 module.exports = {
      entry: {
      	//map
-     	app:'./entry.js',
+     	co_planning:'./co_planning_entry.js',
      	//welcome
-     	welcome:'./welcome_entry.js',
+     	welcome:'./index_welcome_entry.js',
      	//user
      	user:'./user_entry.js',
      },

@@ -1,37 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title>3DGIS in co-planning</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="./font/iconfont.css">
-	</head>
-	<body>
-	    <div class="wrapper" id='wrapper'>
-	    	<div class="header">
-	    		<div class="menu">
-					<!-- <span class="item">文件</span>
-					<span class="item">分析</span>
-					<span class="item">工具</span>
-					<span class="item">资源</span>
-					<span class="item">帮助</span> -->
-	    		</div>				
-	    	</div>
-	    	<div class="content">
-	    		<div class="primary">
-					<div class="map">
-						<canvas id="webgl"></canvas>
-					</div>
-	    		</div>
-	    		<div class="secondary">
-					<div class="obj-info" id="info-pan">
-					</div>
-	    		</div>
-	    	</div>
-	    </div>
-		<div id="Stats-output"></div>
-		<script src="vendor/threejs/three.js"></script>	
-		<script src="./app.bundle.js"></script>	
-	</body>
-</html>
-
+<!-- welcome.html -->
+<!-- for login/register -->
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Welcome!</title>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">  
+    <link rel="stylesheet" type="text/css" href="./css/welcome.css"/>  
+</head>  
+<body> 
+    <div id="login">  
+        <h1>Login</h1>  
+        <form onsubmit="return false" id="login-form">  
+            <input type="text" required="required" placeholder="用户名" name="user"></input>  
+            <input type="password" required="required" placeholder="密码" name="psw"></input>  
+            <button class="but" type="sumit" id='sumit-btn'>登录</button>  
+        </form>  
+    </div>
+    <script src="./welcome.bundle.js"></script>	  
+</body>  
+</html> 

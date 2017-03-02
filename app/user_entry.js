@@ -43,7 +43,7 @@ function goProject(projectId){
 	{
 		Util.storeData(projectLocalName,projectId);
 		var location=window.location;
-		location.href=location.origin+'/index.html';
+		location.href=location.origin+'/co_planning.html';
 		return true;
 	}
 	else{return false;}
