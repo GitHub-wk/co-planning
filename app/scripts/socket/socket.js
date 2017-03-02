@@ -50,7 +50,6 @@ var reload=function(projectData){
 	//TODO remove all building
 	console.log('reload',projectData);
 	BuildingAction.removeAll();
-	console.log(projectData);
 	for(var i=0;i<projectData.features.length;i++)
 	{
 

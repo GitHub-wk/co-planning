@@ -121,7 +121,6 @@ var buildingTOJSON=function(buildingMesh){
 	}
 	return Feature;
 }
-console.log(buildingTOJSON);
 export {
 	createBuilding,
 	modifyBuildingHeight,

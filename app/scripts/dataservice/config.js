@@ -4,6 +4,8 @@
  * @date 2016/11/28
  * @description public config
  */
+import Util from '../core/Util.js';
+
 var HTTPMETHOD={
 	"GET":'get',
 	"POST":'post',
@@ -60,9 +62,17 @@ var _apiList={
 	}
 }
 
-var getAPI=function(name){
+var getAPI=function(name,urlFormat){
 	//TODO formate
-	
+	var api=_apiList[name];
+	if(urlFormat&&api)
+	{
+		//deepCopy TODO
+		return{
+			url:Util.template(api.url,urlFormat),
+			method:api.method,
+		}
+	}
 	return _apiList[name];
 }
 

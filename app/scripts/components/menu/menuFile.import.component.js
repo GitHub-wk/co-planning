@@ -1,7 +1,7 @@
 // menuFile.import.component.js
 import { DomEvent, DomUtil } from '../../core/core.js';
 import { modal } from '../../ModalDefaultInit.js';
-import {user,asynData,getAPI} from '../../dataservice/CommonDatabase.js';
+import {user,asynData} from '../../dataservice/CommonDatabase.js';
 
 
 export const IMPORTTYPE = {
@@ -19,7 +19,7 @@ export class ImportItem {
 
             DomUtil.toggleClass(modal.element, 'modal-display');
 
-            asynData(getAPI('GetProjectList'), user.getUser())
+            asynData('GetProjectList', user.getUser())
                 .then(function(res) {
                     console.log('modal info:', res);
                 })

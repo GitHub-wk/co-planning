@@ -48,14 +48,21 @@ User.prototype.setUser=function(user){
 
 var user=new User();
 
-function asynData(apiName, data={}){
-	return axios[apiName.method](apiName.url,data)
+function asynData(apiName, data={},urlFormat){
+	var api=getAPI(apiName,urlFormat);
+	return axios[api.method](api.url,data)
 	.then(function(data){
-		console.log(data);
-		return data;
+		var getData=data.data;
+		if(getData.status===1)
+		{
+			return getData;
+		}
+		else{
+			throw new Error(getData.msg);
+		}
 	},function(){
-		throw new Error('failed to get data from server');
+		throw new Error(null);
 	})
 }
 
-export{user, asynData ,getAPI};
+export{user, asynData};
