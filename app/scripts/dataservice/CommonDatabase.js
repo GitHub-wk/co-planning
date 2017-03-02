@@ -65,4 +65,9 @@ function asynData(apiName, data={},urlFormat){
 	})
 }
 
-export{user, asynData};
+function getLocalProjectId(){
+	var projectId=Util.getData('$$projectId');
+	return projectId;
+}
+
+export{user, asynData,getLocalProjectId};
