@@ -4,10 +4,13 @@ var beforeRouter=require('./before.js');
 var userRouter=require('./user.js');
 var uploadRouter = require('./upload.js');
 var projectRouter = require('./project.js');
-var afterRouter=require('./after.js');
+var afterHandler=require('./after.js');
 
 var app=express();
-app.use('/',beforeRouter,[userRouter,projectRouter,uploadRouter],afterRouter);
+app.use('/',beforeRouter,[userRouter,projectRouter,uploadRouter]);
+app.use(afterHandler.errorHandler);
+app.use(afterHandler.notFoundHandler);
+
 
 var start=function(port){
 	var port=port||8082;
