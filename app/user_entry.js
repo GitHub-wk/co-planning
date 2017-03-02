@@ -8,6 +8,13 @@ import Util from './scripts/core/Util.js';
 
 var projectLocalName='$$projectId';
 var userData=user.getUserFromLocal();
+var goProjectEl=DomUtil.getById('go-project');
+DomEvent.on(goProjectEl,'click',function(){
+	var projectIdEl=DomUtil.getById('joinedId');
+	var projectId=projectIdEl.value;
+	console.log(projectId);
+	goProject(projectId);
+})
 
 asynData('GetProjectList',{email:userData.email,unionId:userData.unionId},{pageNumber:0})
 .then(function(project){
@@ -21,9 +28,7 @@ asynData('GetProjectList',{email:userData.email,unionId:userData.unionId},{pageN
 		var projectEl=DomUtil.create('div','project-item',projectPanEl);
 		projectEl.innerHTML='name:'+projectItem.name+';id:'+projectItem._id;
 		var clickFn=function(){
-			Util.storeData(projectLocalName,this._id);
-			var location=window.location;
-			location.href=location.origin+'/index.html';
+			goProject(this._id);
 		}
 		DomEvent.on(projectEl,'click',Util.bind(clickFn,projectItem));
 	}
@@ -31,5 +36,17 @@ asynData('GetProjectList',{email:userData.email,unionId:userData.unionId},{pageN
 },function(error){
 	console.log(error);
 });
+
+
+function goProject(projectId){
+	if(projectId)
+	{
+		Util.storeData(projectLocalName,projectId);
+		var location=window.location;
+		location.href=location.origin+'/index.html';
+		return true;
+	}
+	else{return false;}
+}
 
 console.log(userData);
