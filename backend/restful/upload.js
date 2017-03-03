@@ -2,7 +2,6 @@
 var express=require('express');
 var router=express.Router();
 const path=require('path');
-const 
 var formidable = require('formidable');
 var STATUS=require('./CONSTANT.js').STATUS;
 
