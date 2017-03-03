@@ -5,6 +5,7 @@ import InfoLayer from './components/info/InfoLayer.component.js';
 import InfoObject from './components/info/InfoObject.component.js';
 import InfoMaterial from './components/info/InfoMaterial.component.js';
 import InfoBuilding from './components/info/InfoObject.building.component.js';
+import InfoBuildingMaterial from './components/info/InfoMaterial.building.component.js';
 import {BuildingAction} from './dataservice/WorldAction.js';
 import {RemoveObjectCommand,SetValueCommand} from './components/commands/commands.js';
 
@@ -49,12 +50,15 @@ function visibleAllMesh(mesh){
 }
 
 var materialTab=new InfoMaterial();
+
+
 infoInit.addChild(layerTab)
 		.addChild(objectTab)
 		.addChild(materialTab);
 var infoBuildingInit=new InfoBuilding();
 objectTab.addChild(infoBuildingInit);
-
+var infoBuildingMaterialInit=new InfoBuildingMaterial();
+materialTab.addChild(infoBuildingMaterialInit);
 //buildDom		
 var tab=DomUtil.create('div','info-tab',infoInit.element);
 var layerTabItem=DomUtil.create('span','tab-item',tab);
@@ -94,4 +98,4 @@ var select=function(section){
 	}
 }
 select(lang.LAYER);
-export {infoInit,infoBuildingInit,layerTab,objectTab};
+export {infoInit,infoBuildingInit,infoBuildingMaterialInit,layerTab,objectTab};

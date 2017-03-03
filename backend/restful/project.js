@@ -134,6 +134,7 @@ router.delete('/project/members',function(req,res){
 });
 
 //add resources to project
+//TODO remove file to diffrent dir
 router.post('/project/resources',function(req,res){
     var email=req.body.email;
     var unionId=req.body.unionId;

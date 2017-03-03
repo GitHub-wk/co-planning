@@ -46,7 +46,8 @@ export default class worldFactory{
 	    //gui-control
 	    var  guiControl=new GuiControl();
 	    //console.log(guiControl);
-	    guiControl.addLightControl(pointLight)
+	    guiControl
+	    //.addLightControl(pointLight)
 	                .addStatsMonitor("Stats-output");
 	    new Draggable(DomUtil.getById("Stats-output"));
 	    //new Draggable(guiControl.gui.domElement.parentNode);

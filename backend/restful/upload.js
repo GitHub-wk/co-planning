@@ -1,6 +1,8 @@
 // upload.js
 var express=require('express');
 var router=express.Router();
+const path=require('path');
+const 
 var formidable = require('formidable');
 var STATUS=require('./CONSTANT.js').STATUS;
 
@@ -17,7 +19,7 @@ router.put('/upload',function(req,res){
      	res.json({
      		msg:STATUS.UPLOAD_SUCCESS.lng,
      		data:{
-     			url:files.file.path,
+     			url:path.basename(files.file.path),
      		},
      		code:STATUS.UPLOAD_SUCCESS.code,
      		status:STATUS.SUCCESS.code,

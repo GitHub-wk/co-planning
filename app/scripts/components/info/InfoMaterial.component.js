@@ -3,7 +3,7 @@ import {DomUtil,Util} from '../../core/core.js';
 var UI=DomUtil.UI;
 export default class InfoMaterial{
 	constructor(){
-		this.element=DomUtil.createElement('div','info-material','this is material');
+		this.element=DomUtil.createElement('div','info-material','');
 		this.children=[];
 	}
 	addChild(child){
@@ -17,6 +17,12 @@ export default class InfoMaterial{
 		return this;
 	}
 	refresh(intersects){
+		var intersect=intersects[0];
+		//if intersect===undefinded
+		if(!intersect)
+		{
+			DomUtil.empty(this.element);
+		}
 		Util.forEach(this.children,function(child){
 			child.execute(intersects);
 		});

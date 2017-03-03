@@ -1,6 +1,8 @@
 // buildingTool.js
 import * as THREE from 'threejs';
 import {MercatorProjection} from '../../geo/MercatorProjection.js';
+import {texturesUrl} from '../../dataservice/config.js';
+
 var projection=new MercatorProjection();
 var createBuilding=function(shape,properties){
 	var extrudeSettings = {
@@ -11,8 +13,8 @@ var createBuilding=function(shape,properties){
     var geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
     var position=geometry.center().negate();
     var material1= new THREE.MeshLambertMaterial({color:0xD0715E });
-    //TODO use peoperties to set material url;
-    var texture = new THREE.TextureLoader().load( "images/textures/brick_diffuse.jpg" );
+
+    var texture = new THREE.TextureLoader().load(texturesUrl+properties.MATERIALURL||'buildingDefualtUrl.jpg');
     texture.wrapS = THREE.RepeatWrapping;
 	texture.wrapT = THREE.RepeatWrapping;
     var material2=new THREE.MeshLambertMaterial({map:texture});
