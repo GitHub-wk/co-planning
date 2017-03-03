@@ -36,13 +36,6 @@ export default class worldFactory{
 	    var pointLightHelper=new THREE.PointLightHelper(pointLight,1);
 	    var amLight=new THREE.AmbientLight(0xffffff,0.8);
 
-
-	    //TODO  test solar angle calculate
-	    //var now = new Date();
-	    //var solar = new Solar();
-	    //DevTools,should be deleted in master
-	    //var lightShadowCamera = new THREE.CameraHelper(solar.light.shadow.camera);
-
 	    //gui-control
 	    var  guiControl=new GuiControl();
 	    //console.log(guiControl);
@@ -55,8 +48,20 @@ export default class worldFactory{
 	    // var orbit=new THREE.OrbitControls(world.camera, world.renderer.domElement);
 	    var orbit=new cameraControl(world.camera, world.renderer.domElement);  
 	    world.addToScene(amLight);
-	    //solar.showLight(new Date(2017,1,9,6,40),{ lat: 30.530716753548138, lng: 114.35120420404286 });
-	 
+
+	    //add solar on the world
+	    var preventSolar;
+	    globalEvent.on('addSolarToScreen',function(solar){
+	    	if(!!preventSolar)
+	    	{
+	    		world.scene.remove(preventSolar.light);
+	    		world.scene.remove(preventSolar.light.target);
+	    	}
+	    	if(!!solar){
+	    		preventSolar = solar 
+   				world.addToScene(solar.light, solar.light.target);	
+	    	}
+	    })
 	    //re-render world
 	    globalEvent.on('requestAmimationFrame',function() {
 	        world.render();
