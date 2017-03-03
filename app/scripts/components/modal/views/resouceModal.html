@@ -1,25 +1,31 @@
 <div class="user-modal">
-    <div class="modal-head">建筑资源列表</div>
+    <div class="modal-head">
+        建筑资源列表
+        <span class="close-icon" data-bind = "click: resourcemodal.closeModal">X</span>
+    </div>
+
     <div class="data-modal-body">
-        <table>
+        <table class="modal-table">
             <thead>
                 <tr>
-                    <th>name</th>
-                    <th>resourceUrl</th>
-                    <th></th>
+                    <th>资源名称</th>
+                    <th>资源地址</th>
+                    <th>操作</th>
                 </tr>
             </thead>
-            <tbody data-bind="foreach: dataArr">
-                <tr>
+            <tbody data-bind="foreach: resourcemodal.dataArr">
+                <tr class="modal-table-row">
                     <td>
-                        <div data-bind="value: name" />
+                        <div data-bind="text: name"></div>
                     </td>
                     <td>
-                       <div data-bind="value: url" />
+                       <img data-bind="url: faceImg" />
+                    </td>
+                    <td>
+                        <button data-bind="click: $root.resourcemodal.loadResource">获取</button>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <!-- <h2>Hello, <span data-bind="text: fullName"> </span>!</h2> -->
     </div>
 </div>

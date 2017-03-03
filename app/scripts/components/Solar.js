@@ -14,10 +14,6 @@ axios.get('../../index.html')
   });
 
   var path = require('path');
-  console.log('=================path =========');
-  console.log(path);
-  console.log(path.resolve(__dirname));
-
 
 export class Solar {
     constructor() {

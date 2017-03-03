@@ -109,11 +109,16 @@ component style
 	z-index: 999;
 	top: 200px;
 	background-color:#fff;
+
+	border-radius: 6px;
+    box-shadow: 0 3px 9px rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 5px 15px rgba(0,0,0,.5);
 }
 
 .data-modal-body{
-	height:200px;
 	padding: 0px 10px 10px 10px;
+	max-height: 300px;
+    overflow: auto;
 }
 
 .modal-display{
@@ -122,4 +127,32 @@ component style
 
 .modal-head{
 	padding: 10px;
+	border-bottom: 1px solid #aaa
+}
+
+.modal-table{
+	width: 100%;
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+.close-icon{
+	float:right;
+	cursor:pointer;
+}
+
+.data-modal-solar{
+	padding: 20px 0px;
+}
+
+.data-modal-solar input{
+	padding:5px;
+	margin-left:30px;
+}
+
+.data-modal-solar button{
+	padding:5px 0px;
+	float:right;
+	margin-left:5px;
 }
