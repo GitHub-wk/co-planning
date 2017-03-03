@@ -12,7 +12,7 @@ var createBuilding=function(shape,properties){
 	    };
     var geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
     var position=geometry.center().negate();
-    var material1= new THREE.MeshLambertMaterial({color:0xD0715E });
+    var material1= new THREE.MeshLambertMaterial({color:0xEBE8EB });
 
     var texture = new THREE.TextureLoader().load(texturesUrl+properties.MATERIALURL||'buildingDefualtUrl.jpg');
     texture.wrapS = THREE.RepeatWrapping;

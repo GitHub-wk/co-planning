@@ -19,6 +19,8 @@ var infoEle=DomUtil.getById("info-pan");
 var infoInit=new Info(infoEle);
 var layerTab=new InfoLayer();
 var objectTab=new InfoObject();
+var materialTab=new InfoMaterial();
+
 objectTab.signal.on('update',function(command){
 	console.log(command);
 	BuildingAction.command(command);
@@ -49,7 +51,10 @@ function visibleAllMesh(mesh){
 	}
 }
 
-var materialTab=new InfoMaterial();
+materialTab.signal.on('changeMaterial',function(command){
+	console.log(command);
+	BuildingAction.command(command);
+})
 
 
 infoInit.addChild(layerTab)

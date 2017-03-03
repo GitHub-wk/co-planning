@@ -50,7 +50,7 @@ BuildingStore.on(BUILDING_CONSTS.COMMAND,function(command){
 });
 BuildingStore.on(BUILDING_CONSTS.REMOVE,function(command){
     command.execute();
-})
+});
 
 
 //drawpan-component

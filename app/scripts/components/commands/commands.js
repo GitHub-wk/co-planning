@@ -5,6 +5,7 @@ import SetRotationCommand from './SetRotationCommand.js';
 import SetValueCommand from './SetValueCommand.js'; 
 import RemoveObjectCommand from './RemoveObjectCommand.js';
 import SetBuildingHeightCommand from './SetBuildingHeightCommand.js';
+import SetMaterialCommand from './SetMaterialCommand.js';
 export {
 	SetPositionCommand,
 	SetScaleCommand,
@@ -12,4 +13,5 @@ export {
 	SetValueCommand,
 	RemoveObjectCommand,
 	SetBuildingHeightCommand,
+	SetMaterialCommand,
 }
