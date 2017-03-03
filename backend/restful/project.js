@@ -6,6 +6,7 @@ var projectModel = require('../database/model/projectModel');
 var userLayer = require('../database/layers/userLayer.js');
 var STATUS=require('./CONSTANT.js').STATUS;
 //body:userName:,unionId:,projectName
+//project api should first test user auth;
 router.use(['/project','/projects'],function(req,res,next){
     var email = req.body.email;
     var unionId = req.body.unionId;

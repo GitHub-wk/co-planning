@@ -14,7 +14,7 @@ var createBuilding=function(shape,properties){
     var position=geometry.center().negate();
     var material1= new THREE.MeshLambertMaterial({color:0xEBE8EB });
 
-    var texture = new THREE.TextureLoader().load(texturesUrl+properties.MATERIALURL||'buildingDefualtUrl.jpg');
+    var texture = new THREE.TextureLoader().load(texturesUrl+(properties?properties.MATERIALURL:'buildingDefualtUrl.jpg'));
     texture.wrapS = THREE.RepeatWrapping;
 	texture.wrapT = THREE.RepeatWrapping;
     var material2=new THREE.MeshLambertMaterial({map:texture});
@@ -64,19 +64,29 @@ var resetBuildingFaceUV=function(geometry,repeatY,repeatX)
 	var faceVertexUvs=geometry.faceVertexUvs[0];
 	var topbottomtriangleNum=verticesNum-4;
 	var odd=true;
+	var startX1=0;
+	var startX2=0;
+	var floorHeight=Math.abs(geometry.vertices[verticesNum-1].z-geometry.vertices[0].z)/repeatY;
 	for(var i=topbottomtriangleNum;i<faceVertexUvs.length;i++)
 	{
 		var faceUv=faceVertexUvs[i];
 		if(odd)
 		{
-			faceUv[0].set(0,0);
-			faceUv[1].set(1,0);
+			var face=geometry.faces[i];
+			var point0=geometry.vertices[face.a];
+			var point1=geometry.vertices[face.b];
+			var point02d=new THREE.Vector2(point0.x,point0.y);
+			var point12d=new THREE.Vector2(point1.x,point1.y);
+			startX1=startX2;
+			startX2+=point02d.distanceTo(point12d)/floorHeight;
+			faceUv[0].set(startX1,0);
+			faceUv[1].set(startX2,0);
 			faceUv[2].set(0,1*repeatY);
 		}
 		else{
-			faceUv[0].set(1,0);
-			faceUv[1].set(1,1*repeatY);
-			faceUv[2].set(0,1*repeatY);
+			faceUv[0].set(startX2,0);
+			faceUv[1].set(startX2,1*repeatY);
+			faceUv[2].set(startX1,1*repeatY);
 		}
 		odd=!odd;
 	}
