@@ -6,7 +6,7 @@ import {DomEvent} from './core/core.js';
 import {BuildingStore} from './dataservice/WorldStore';
 import * as THREE from 'threejs';
 import {BUILDING_CONSTS} from './dataservice/CONSTANTS.js';
-import {infoInit,infoBuildingInit,layerTab,objectTab} from './InfoDefaultInit.js';
+import {infoInit,infoBuildingInit,infoBuildingMaterialInit,layerTab,objectTab} from './InfoDefaultInit.js';
 import {drawPanInit} from './DrawDefaultInit.js';
 import './MenuDefaultInit.js';
 import {Ground,GroundLayer} from './components/Layer/GroundLayer.js';
@@ -50,7 +50,7 @@ BuildingStore.on(BUILDING_CONSTS.COMMAND,function(command){
 });
 BuildingStore.on(BUILDING_CONSTS.REMOVE,function(command){
     command.execute();
-})
+});
 
 
 //drawpan-component
@@ -65,7 +65,8 @@ layerCollection.addLayer(new Layer(drawPanInit.getDrawGroup(),'绘画'));
 infoInit.resetWorld(world)
         .emptyIntersectObjects([buildingGroup,drawPanInit.getDrawGroup(),layerCollection.defaultLayer.object]);
 layerTab.setLayers(layerCollection);
-infoBuildingInit.setIntersectNames({'building':true});				
+infoBuildingInit.setIntersectNames({'building':true});
+infoBuildingMaterialInit.setIntersectNames({'building':true});				
 // infoDrawMeshInit.setIntersectNames({'drawpan_mesh':true,'featurePoints':true,'featureLine':true});
 //when in drawMode should not has info
 

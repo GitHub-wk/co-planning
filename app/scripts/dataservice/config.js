@@ -15,6 +15,8 @@ var HTTPMETHOD={
 var socketUrl='ws://172.16.102.186:3000';
 
 var baseUrl="http://172.16.102.186:8082";
+
+var texturesUrl=baseUrl+'/textures/';
 var _apiList={
 	Register:{
 		url:baseUrl+'/user/register',
@@ -79,4 +81,5 @@ var getAPI=function(name,urlFormat){
 export{
 	getAPI,
 	socketUrl,
+	texturesUrl,
 }

@@ -2,7 +2,7 @@
 var express=require('express');
 var router=express.Router();
 var bodyParser = require('body-parser');
-
+const path = require('path');
 
 //for post
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -13,5 +13,6 @@ router.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
 	next();
 });
+router.use(express.static(path.join(process.cwd(), 'public')));
 
 module.exports=router;
