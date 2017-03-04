@@ -158,6 +158,18 @@ var DomUtil = {
 			el.className.baseVal = name;
 		}
 	},
+	parseDom:function(html) {
+		//TODO  new DOMParser()
+		var dom=this.createElement('div','',html);
+		var node=null;
+		Util.forEach(dom.childNodes,function(childNode){
+			if(childNode.nodeType===1)
+			{
+				node=childNode;
+			}
+		})
+　　 	return node;
+	},
 	//get mouseposition relative to dom
 	getMousePosition:function(el,event){
 		 var rect = el.getBoundingClientRect();

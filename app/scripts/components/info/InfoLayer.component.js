@@ -38,7 +38,7 @@ export default class InfoLayer{
 										alert('不可清除！');
 										return false;
 									}
-								confirmModal.show({
+								confirmModal.open({
 									content:'确认清除此图层？(删除后不可复原！)',
 									callback:function(flag){
 										if(flag){

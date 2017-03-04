@@ -1,0 +1,17 @@
+<div class="modal fade" style="width:100%;background-color: rgba(0,0,0,0.5);">
+    <div class="modal-dialog">
+        <div class="modal-content" style="height:100%;">
+            <div class="modal-header">
+                <button type="button" class="close" data-bind="click:closeFn"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" data-bind="text:headerText"></h4>
+            </div>
+            <div class="modal-body">
+             	 <span data-bind="text:contentText"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bind="click:function(){clickFn(false)}">取消</button>
+                <button type="button" class="btn btn-primary" data-bind="click:function(){clickFn(true)}">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

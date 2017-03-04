@@ -49,5 +49,5 @@ export default class DrawClose{
 		this.fatherPan.updateDrawMesh();
 	}
 }
-var drawCloseEle=DomUtil.createElement("div","close","<span>闭合</span>");
+var drawCloseEle=DomUtil.createElement("div","path-close","<span>闭合</span>");
 DrawClose.defaultInit=new DrawClose(drawCloseEle);

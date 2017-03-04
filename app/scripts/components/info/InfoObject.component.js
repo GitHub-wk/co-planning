@@ -49,7 +49,7 @@ export default class InfoObject{
 		var objectType = new UI.Text();
 		objectTypeRow.add( new UI.Text(lang.NAME).setWidth( '90px' ) );
 		objectTypeRow.add( objectType );
-		var objectDelete=new UI.Button(lang.DEL).setClass('btn btn-danger').setPosition('absolute').setRight('10px').onClick(deleteObject);
+		var objectDelete=new UI.Button(lang.DEL).setClass('btn btn-danger btn-sm').setPosition('absolute').setRight('10px').onClick(deleteObject);
 		objectTypeRow.add(objectDelete);
 		commonInfo.add(objectTypeRow);
 
@@ -134,7 +134,7 @@ export default class InfoObject{
 			}
 		}
 		function deleteObject(){
-			confirmModal.show({
+			confirmModal.open({
 				content:lang.CONFIRM_DEL_OBJ,
 				callback:function(flag){
 					if(scope.selectedObject&&flag)

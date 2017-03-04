@@ -18,7 +18,7 @@ export default class InfoBuildingMaterial{
 	_initDom(){
 		var materialTextRow = new UI.Row();
 		materialTextRow.add( new UI.Text(lang.TEXTURE).setWidth( '100px' ) );
-		var materialChange=new UI.Button(lang.CHANGE).setClass('btn').setPosition('absolute').setRight('10px').onClick(changeMaterial);
+		var materialChange=new UI.Button(lang.CHANGE).setClass('btn btn-sm').setPosition('absolute').setRight('10px').onClick(changeMaterial);
 		materialTextRow.add(materialChange);
 		DomUtil.appendChild(this.element,materialTextRow.dom);
 		var imgEl=DomUtil.create('img','',this.element);
