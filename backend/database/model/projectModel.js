@@ -7,6 +7,8 @@ var projectSchema = mongoose.Schema( {
         type: String,
         required: true,
     },
+    projectArea:Number,
+    greenArea:Number,
     leader: {
         type: String,
         required: true,

@@ -26,10 +26,14 @@ router.use(['/project','/projects'],function(req,res,next){
 router.post('/project', function (req, res) {
     var email = req.body.email;
     var projectName = req.body.projectName;
+    var greenArea=req.body.greenArea;
+    var projectArea=req.body.projectArea;
     var back = null;
     var project = new projectModel({
         name: projectName,
         leader: email,
+        projectArea:projectArea,
+        greenArea:greenArea,
         resources: [],
         members: [],
     });
@@ -45,6 +49,30 @@ router.post('/project', function (req, res) {
     });
     
 });
+
+//modifyProject
+router.put('/project',function(req,res){
+    var email=req.body.email;
+    var projectName=req.body.projectName;
+    var greenArea=req.body.greenArea;
+    var projectArea=req.body.projectArea;
+    var projectId=req.body.projectId;
+    projectModel.findOneAndUpdate({leader:email,_id:projectId},{
+        "$set":{projectArea:projectArea,name:projectName,greenArea:greenArea}
+    },function(error,project){
+        if(error)
+        {
+            console.log(error);
+            back={msg:'修改项目出错',data:null,code:STATUS.ERROR.code,status:STATUS.ERROR.code};
+        }
+        else{
+
+            back={msg:'修改项目成功',data:project,code:STATUS.SUCCESS.code,status:STATUS.SUCCESS.code};
+        }
+        res.json(back);
+    })
+
+})
 
 //delete project
 router.delete('/project', function (req, res) {

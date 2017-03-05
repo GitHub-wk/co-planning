@@ -10,6 +10,7 @@ import DomEvent from './scripts/core/DomEvent.js';
 import Util from './scripts/core/Util.js';
 import {parseFromUrl} from './scripts/components/partial/partial.js';
 import {inputModal,confirmModal} from './scripts/components/commonTool/modalTool.js';
+import {projectModal,MODEL} from './scripts/components/modal/projectModal.js'
 var projectLocalName='$$projectId';
 var userData=user.getUserFromLocal();
 console.log(userData);
@@ -82,7 +83,7 @@ var projectListViewModel={
 		{
 			Util.storeData(projectLocalName,projectId);
 			var location=window.location;
-			location.href=location.origin+'/co_planning.html';
+			window.open(location.origin+'/co_planning.html');
 			return true;
 		}
 		else{
@@ -91,21 +92,12 @@ var projectListViewModel={
 		}
 	},
 	addProject:function(){
-		inputModal.open({
-			headerText:'请输入创建的项目名称(3-11个数字或字母)',
-			callback:function(flag,projectName){
-				if(flag&&projectName)
-				{
-					asynData('CreatProject',{
-						email:userData.email,
-						unionId:userData.unionId,
-						projectName:projectName,
-					}).then(function(){
-						refreshProjectList();
-					});
-				}
+		projectModal.open({
+			success:function(project){
+				console.log(project);
+				refreshProjectList();
 			}
-		});
+		},MODEL.ADD);
 	},
 	removeProject:function(){
 		var self=this;
@@ -126,6 +118,19 @@ var projectListViewModel={
 				}
 			}
 		});		
+	},
+	modifyProject:function(){
+		var self=this;
+		projectModal.open({
+			name:self.name,
+			projectArea:self.projectArea,
+			greenArea:self.greenArea,
+			projectId:self._id,
+			success:function(project){
+				console.log(project);
+				refreshProjectList();
+			}
+		},MODEL.EDIT);
 	}
 }
 parseFromUrl('/scripts/components/partial/projectList.html',projectListViewModel,DomUtil.getById('project-pan'));

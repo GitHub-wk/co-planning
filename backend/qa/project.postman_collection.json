@@ -20,7 +20,7 @@
 		{
 			"id": "07b5164e-1275-0947-a06f-19f16c4d38a7",
 			"headers": "Content-Type: application/x-www-form-urlencoded\n",
-			"url": "http://127.0.0.1:8082/project/search",
+			"url": "http://127.0.0.1:8082/project/search?type=1",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "POST",
@@ -33,7 +33,7 @@
 				},
 				{
 					"key": "unionId",
-					"value": "fb884842-feb8-4727-96f2-b5e8d518f0bc",
+					"value": "6b30ad1b-2355-4280-8e9b-60bd1378a066",
 					"type": "text",
 					"enabled": true
 				},
@@ -48,7 +48,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488002198144,
+			"time": 1488714890279,
 			"name": "get project detail",
 			"description": "",
 			"collectionId": "e0b7e81e-6522-75f0-30d4-7163f3dcfb79",
@@ -70,7 +70,7 @@
 				},
 				{
 					"key": "unionId",
-					"value": "19595a38-d73b-4713-be0a-aad1cd9b1e77",
+					"value": "77ca9bd3-733f-42d1-afe2-c3bcce14584b",
 					"type": "text",
 					"enabled": true
 				},
@@ -86,7 +86,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488005395162,
+			"time": 1488714892263,
 			"name": "get project list",
 			"description": "",
 			"collectionId": "e0b7e81e-6522-75f0-30d4-7163f3dcfb79",
@@ -104,12 +104,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488005396872,
+			"time": 1488290899257,
 			"name": "add resources to project",
 			"description": "",
 			"collectionId": "e0b7e81e-6522-75f0-30d4-7163f3dcfb79",
 			"responses": [],
-			"rawModeData": "{\n    \"email\": \"1249561679@qq.com\",\n    \"unionId\": \"19595a38-d73b-4713-be0a-aad1cd9b1e77\",\n    \"projectId\": \"58b127ce459b74334090d5f6\",\n    \"resources\": [\n        {\"type\":\"1\",\"url\":\"21038921.json\"}\n    ]\n}"
+			"rawModeData": "{\n    \"email\": \"1249561679@qq.com\",\n    \"unionId\": \"c6edb49f-9cd1-4b50-b3e9-a2d768653087\",\n    \"projectId\": \"58b127ce459b74334090d5f6\",\n    \"resources\": [\n        {\n        \t\"type\":\"1\",\n        \t\"url\":\"21038921.json\",\n        \t\"name\":\"建筑1\",\n        \t\"faceImg\":\"图1片\"\n        \t\n        }\n    ]\n}"
 		},
 		{
 			"id": "354b6938-3519-3fc6-94b3-adc4657a165e",
@@ -127,13 +127,13 @@
 				},
 				{
 					"key": "unionId",
-					"value": "8a2fe0dc-7f40-4fe8-b433-81bbaba139bf",
+					"value": "0e5280b7-b59f-4deb-98f8-3f1a534d0311",
 					"type": "text",
 					"enabled": true
 				},
 				{
 					"key": "projectName",
-					"value": "project2",
+					"value": "project2-qwe",
 					"type": "text",
 					"enabled": true
 				}
@@ -142,7 +142,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488005170717,
+			"time": 1488714887112,
 			"name": "add project",
 			"description": "",
 			"collectionId": "e0b7e81e-6522-75f0-30d4-7163f3dcfb79",
@@ -152,10 +152,9 @@
 			"id": "663d9c34-14d6-d62c-af00-a4e6a25e92f8",
 			"headers": "Content-Type: application/x-www-form-urlencoded\n",
 			"url": "http://127.0.0.1:8082/project",
-			"pathVariables": {},
 			"preRequestScript": null,
+			"pathVariables": {},
 			"method": "DELETE",
-			"collectionId": "e0b7e81e-6522-75f0-30d4-7163f3dcfb79",
 			"data": [
 				{
 					"key": "email",
@@ -165,27 +164,27 @@
 				},
 				{
 					"key": "unionId",
-					"value": "8a2fe0dc-7f40-4fe8-b433-81bbaba139bf",
+					"value": "0e5280b7-b59f-4deb-98f8-3f1a534d0311",
 					"type": "text",
 					"enabled": true
 				},
 				{
 					"key": "projectId",
-					"value": "58b12675647cc529a421c218",
+					"value": "58b5880d7eaf453edc755",
 					"type": "text",
 					"enabled": true
 				}
 			],
 			"dataMode": "urlencoded",
-			"name": "delete project",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1488005162473,
 			"version": 2,
-			"responses": [],
 			"tests": null,
 			"currentHelper": "normal",
-			"helperAttributes": {}
+			"helperAttributes": {},
+			"time": 1488714885362,
+			"name": "delete project",
+			"description": "",
+			"collectionId": "e0b7e81e-6522-75f0-30d4-7163f3dcfb79",
+			"responses": []
 		},
 		{
 			"id": "8356cc28-7af1-1719-c076-40bb8738346c",
@@ -242,12 +241,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488002995781,
+			"time": 1488290903177,
 			"name": "add members to project",
 			"description": "",
 			"collectionId": "e0b7e81e-6522-75f0-30d4-7163f3dcfb79",
 			"responses": [],
-			"rawModeData": "{\n    \"email\": \"1249561679@qq.com\",\n    \"unionId\": \"321a4efc-3c6d-4917-aa76-a422f4d61211\",\n    \"projectId\": \"5863777821e49828d4ebd855\",\n    \"members\": [\n        \"1249561678@qq.com\",\"ads\",\"sad\",\"sadd1\"\n    ]\n}"
+			"rawModeData": "{\n    \"email\": \"1249561679@qq.com\",\n    \"unionId\": \"f11cbf2d-e6cb-4c60-bc10-90b31eb741ba\",\n    \"projectId\": \"58b127ce459b74334090d5f6\",\n    \"members\": [\n        \"1249561678@qq.com\",\"ads\",\"sad\",\"sadd1\"\n    ]\n}"
 		}
 	]
 }

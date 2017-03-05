@@ -40,6 +40,10 @@ var _apiList={
 		url:baseUrl+'/project',
 		method:HTTPMETHOD.POST
 	},
+	ModifyProject:{
+		url:baseUrl+'/project',
+		method:HTTPMETHOD.PUT,
+	},
 	DeleteProject:{
 		url:baseUrl+'/project',
 		method:HTTPMETHOD.DELETE
