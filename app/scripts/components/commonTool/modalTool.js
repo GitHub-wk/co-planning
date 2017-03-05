@@ -2,6 +2,7 @@
 import {DomUtil,Util} from '../../core/core.js';
 import {BootstrapModal} from './modal.js';
 import ko from 'knockout';
+//confirmModal
 var confirmModal=null;
 var confirmViewModal={
 	headerText:ko.observable(''),
@@ -30,5 +31,31 @@ BootstrapModal.fromTemplateUrl('/scripts/components/commonTool/confirmModal.html
 	console.log(confirmModal);
 });
 
-
-export{confirmModal};
+//inputModal
+//-----------------------------------------------
+var inputModal=null;
+var inputViewModal={
+	headerText:ko.observable(''),
+	inputText: ko.observable(''),
+	closeFn:function(){
+		inputModal.hide();
+	},
+	clickFn:function(){
+		inputModal.hide();
+	}
+}
+BootstrapModal.fromTemplateUrl('/scripts/components/commonTool/inputModal.html',{viewModel:inputViewModal})
+.then(function(modal){
+	inputModal=modal;
+	inputModal.open=function(opts)
+	{
+		inputViewModal.headerText(opts.headerText||'确认');
+		inputViewModal.inputText(opts.inputText||'');
+		inputViewModal.clickFn=function(flag){
+			opts.callback&&(opts.callback(flag,inputViewModal.inputText()));
+			inputModal.hide();
+		}
+		inputModal.show();
+	}
+});
+export{confirmModal,inputModal};

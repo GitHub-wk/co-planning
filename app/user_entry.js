@@ -1,52 +1,104 @@
 // user_entry.js
+import './css/user.less';
 import {user,asynData} from './scripts/dataservice/CommonDatabase.js';
+import {getUrl} from './scripts/dataservice/config.js';
 import axios from 'axios';
+import ko from 'knockout';
 import {getAPI} from './scripts/dataservice/config.js';
 import DomUtil from './scripts/core/DomUtil.js';
 import DomEvent from './scripts/core/DomEvent.js';
 import Util from './scripts/core/Util.js';
-
+import {parseFromUrl} from './scripts/components/partial/partial.js';
+import {inputModal} from './scripts/components/commonTool/modalTool.js';
 var projectLocalName='$$projectId';
 var userData=user.getUserFromLocal();
-var goProjectEl=DomUtil.getById('go-project');
-DomEvent.on(goProjectEl,'click',function(){
-	var projectIdEl=DomUtil.getById('joinedId');
-	var projectId=projectIdEl.value;
-	console.log(projectId);
-	goProject(projectId);
-})
-
-asynData('GetProjectList',{email:userData.email,unionId:userData.unionId},{pageNumber:0})
-.then(function(project){
-	var projectList=project.data;
-	console.log(project)
-	var projectPanEl=DomUtil.getById('project-pan');
-	DomUtil.empty(projectPanEl);
-	for(var i=0;i<projectList.length;i++)
-	{
-		var projectItem=projectList[i];
-		var projectEl=DomUtil.create('div','project-item',projectPanEl);
-		projectEl.innerHTML='name:'+projectItem.name+';id:'+projectItem._id;
-		var clickFn=function(){
-			goProject(this._id);
-		}
-		DomEvent.on(projectEl,'click',Util.bind(clickFn,projectItem));
-	}
-	
-},function(error){
-	console.log(error);
-});
-
-
-function goProject(projectId){
-	if(projectId)
-	{
-		Util.storeData(projectLocalName,projectId);
-		var location=window.location;
-		location.href=location.origin+'/co_planning.html';
-		return true;
-	}
-	else{return false;}
-}
-
 console.log(userData);
+
+//userinfo view
+function UserInfoViewModel(){
+	var self=this;
+	self.userName=ko.observable(userData.userName);
+	self.imgUrl=ko.observable(userData.faceImg),
+	self.faceImg=ko.computed(function(){
+		var imgUrl=self.imgUrl()||'noPic.jpg';
+		return getUrl('img')+imgUrl;
+	})
+	self.email=userData.email;
+}
+parseFromUrl('/scripts/components/partial/userInfo.html',new UserInfoViewModel(),DomUtil.getById('user-info'));
+
+
+//projectLis view
+var projectListViewModel={
+	projectList:ko.observableArray([]),
+	joinedId:ko.observable(''),
+	joinProject:function(){
+		projectListViewModel.goProject(this._id);
+		console.log(this);
+	},
+	removeMember:function(){
+		console.log('remove');
+		var self=this;
+		inputModal.open({
+			headerText:'请输入要移除成员的账号',
+			callback:function(flag,member){
+				if(flag&&member)
+				{
+					asynData('DeleteMembers',{
+						email:userData.email,
+						unionId:userData.unionId,
+						projectId:self._id,
+						members:[member],
+					}).then(function(){
+						refreshProjectList();
+					});
+				}
+			}
+		});
+	},
+	addMember:function(){
+		console.log('add');
+		var self=this;
+		inputModal.open({
+			headerText:'请输入要增加的成员的账号',
+			callback:function(flag,member){
+				if(flag&&member)
+				{
+					asynData('AddMembers',{
+						email:userData.email,
+						unionId:userData.unionId,
+						projectId:self._id,
+						members:[member],
+					}).then(function(){
+						refreshProjectList();
+					});
+				}
+			}
+		});
+	},
+	goProject:function(projectId){
+		console.log('go');
+		if(projectId)
+		{
+			Util.storeData(projectLocalName,projectId);
+			var location=window.location;
+			location.href=location.origin+'/co_planning.html';
+			return true;
+		}
+		else{
+			alert('请先在输入框填写项目id！');
+			return false;
+		}
+	}
+}
+parseFromUrl('/scripts/components/partial/projectList.html',projectListViewModel,DomUtil.getById('project-pan'));
+refreshProjectList();
+function refreshProjectList(){
+	asynData('GetProjectList',{email:userData.email,unionId:userData.unionId},{pageNumber:0})
+	.then(function(project){
+		var projectList=project.data;	
+		projectListViewModel.projectList(projectList);	
+	},function(error){
+		console.log(error);
+	});
+}

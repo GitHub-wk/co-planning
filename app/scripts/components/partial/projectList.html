@@ -1,0 +1,31 @@
+<!-- projectList.html -->
+<div  class="project-list">
+	<div class="divider">
+		您已创建以下项目:
+	</div>
+ 	<div data-bind="foreach:projectList">
+		<div class="item">
+			<p>
+				项目名称：<span data-bind="text:name"></span>	
+			</p>
+			<p>成员列表：
+				<span data-bind="text:members"></span>
+			</p>
+			<p>
+			<button class='btn btn-primary' data-bind="click:$parent.joinProject">进入</button>
+			<button class='btn' data-bind="click:$parent.addMember">增加成员</button>
+			<button class="btn btn-danger" data-bind="click:$parent.removeMember">删除成员</button>
+			</p>		
+		</div>
+ 	</div>
+ 	<div class="divider">
+ 		进入合作项目：
+ 	</div>
+ 	<div class="item" style="overflow: hidden;">
+		<input type="text" class="input" style="width:200px;float: left" data-bind="value:joinedId"/>
+		 		<button class='btn btn-primary' style="float: left;margin-left:20px;" data-bind="click:function(){goProject(this.joinedId())}">进入</button>
+		<p>
+			（请先向项目组长所要id）
+		</p>
+ 	</div>
+</div>

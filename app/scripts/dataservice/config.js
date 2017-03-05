@@ -17,6 +17,12 @@ var socketUrl='ws://172.16.102.186:3000';
 var baseUrl="http://172.16.102.186:8082";
 
 var texturesUrl=baseUrl+'/textures/';
+var imgUrl=baseUrl+'/img/';
+var _urlList={
+	img:imgUrl,
+	textures:texturesUrl,
+	base:baseUrl,
+}
 var _apiList={
 	Register:{
 		url:baseUrl+'/user/register',
@@ -78,8 +84,14 @@ var getAPI=function(name,urlFormat){
 	return _apiList[name];
 }
 
+function getUrl(name)
+{
+	return _urlList[name];
+}
+
 export{
 	getAPI,
 	socketUrl,
 	texturesUrl,
+	getUrl
 }

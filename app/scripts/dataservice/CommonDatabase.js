@@ -50,7 +50,7 @@ var user=new User();
 
 function asynData(apiName, data={},urlFormat){
 	var api=getAPI(apiName,urlFormat);
-	return axios[api.method](api.url,data)
+	return axios({method: api.method,url:api.url,data: data})
 	.then(function(data){
 		var getData=data.data;
 		if(getData.status===1)

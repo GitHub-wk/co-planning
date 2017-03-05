@@ -10,8 +10,13 @@ export class BootstrapModal{
 		DomUtil.appendChild(document.body,this.dom);
 	}
 	show(content){
-		DomUtil.addClass(this.dom,'in');
 		DomUtil.setStyle(this.dom,'display','block');
+		var scope=this;
+		this._timerId=setTimeout(function(){
+			DomUtil.addClass(scope.dom,'in');
+			scope._timerId&&(clearTimeout(scope._timerId));
+			scope=null;
+		});	
 		this.signal.emit('modal.show');
 	}
 	hide(){
