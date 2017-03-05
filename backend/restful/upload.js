@@ -10,7 +10,7 @@ router.put('/upload',function(req,res){
 	form.uploadDir="./resource";
 	form.keepExtensions=true;
   	form.parse(req, function(err, fields, files) {
-  		if(err)
+  		if(err||!files.file)
   		{
   			res.json({msg:STATUS.UPLOAD_ERROR.lng,code:STATUS.UPLOAD_ERROR.code,status:STATUS.ERROR.code,data:null});
   			return false;
