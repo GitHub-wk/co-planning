@@ -3,7 +3,7 @@
  import { AnalysisItem, ANALYSISTYPE } from './menuAnalysis.import.component.js';
  import { Solar } from '../Solar.js';
  import * as THREE from 'threejs';
-import { solarmodal,houseformmodal } from '../../ModalDefaultInit.js';
+import {solarModal} from '../modal/solar.component.js';
 
 
 
@@ -30,10 +30,13 @@ import { solarmodal,houseformmodal } from '../../ModalDefaultInit.js';
 
  //analysisFunction.js
  function lighting() {
-     DomUtil.toggleClass(solarmodal.element, 'modal-display');
+     // DomUtil.toggleClass(solarmodal.element, 'modal-display');
+     console.log(solarModal);
+     solarModal.open();
  }
+
 
  function form() {
  	console.log('form button clicked');
-     DomUtil.toggleClass(houseformmodal.element, 'modal-display');
+     // DomUtil.toggleClass(houseformmodal.element, 'modal-display');
  }
