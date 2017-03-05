@@ -42,7 +42,7 @@ var _apiList={
 	},
 	DeleteProject:{
 		url:baseUrl+'/project',
-		method:HTTPMETHOD.POST
+		method:HTTPMETHOD.DELETE
 	},
 	AddMembers:{
 		url:baseUrl+'/project/members',

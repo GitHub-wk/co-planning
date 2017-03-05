@@ -28,7 +28,6 @@ BootstrapModal.fromTemplateUrl('/scripts/components/commonTool/confirmModal.html
 		}
 		confirmModal.show();
 	}
-	console.log(confirmModal);
 });
 
 //inputModal

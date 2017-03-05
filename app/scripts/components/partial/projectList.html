@@ -2,6 +2,7 @@
 <div  class="project-list">
 	<div class="divider">
 		您已创建以下项目:
+		<button class="btn btn-primary" style="float: right;margin-top: -7px;" data-bind="click:addProject">增加</button>
 	</div>
  	<div data-bind="foreach:projectList">
 		<div class="item">
@@ -13,8 +14,9 @@
 			</p>
 			<p>
 			<button class='btn btn-primary' data-bind="click:$parent.joinProject">进入</button>
-			<button class='btn' data-bind="click:$parent.addMember">增加成员</button>
+			<button class='btn btn-default' data-bind="click:$parent.addMember">增加成员</button>
 			<button class="btn btn-danger" data-bind="click:$parent.removeMember">删除成员</button>
+			<button class="btn btn-danger" data-bind="click:$parent.removeProject">删除项目</button>
 			</p>		
 		</div>
  	</div>

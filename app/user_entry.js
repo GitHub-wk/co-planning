@@ -9,7 +9,7 @@ import DomUtil from './scripts/core/DomUtil.js';
 import DomEvent from './scripts/core/DomEvent.js';
 import Util from './scripts/core/Util.js';
 import {parseFromUrl} from './scripts/components/partial/partial.js';
-import {inputModal} from './scripts/components/commonTool/modalTool.js';
+import {inputModal,confirmModal} from './scripts/components/commonTool/modalTool.js';
 var projectLocalName='$$projectId';
 var userData=user.getUserFromLocal();
 console.log(userData);
@@ -37,7 +37,7 @@ var projectListViewModel={
 		console.log(this);
 	},
 	removeMember:function(){
-		console.log('remove');
+		console.log('removeMember');
 		var self=this;
 		inputModal.open({
 			headerText:'请输入要移除成员的账号',
@@ -57,7 +57,7 @@ var projectListViewModel={
 		});
 	},
 	addMember:function(){
-		console.log('add');
+		console.log('addMember');
 		var self=this;
 		inputModal.open({
 			headerText:'请输入要增加的成员的账号',
@@ -89,6 +89,43 @@ var projectListViewModel={
 			alert('请先在输入框填写项目id！');
 			return false;
 		}
+	},
+	addProject:function(){
+		inputModal.open({
+			headerText:'请输入创建的项目名称(3-11个数字或字母)',
+			callback:function(flag,projectName){
+				if(flag&&projectName)
+				{
+					asynData('CreatProject',{
+						email:userData.email,
+						unionId:userData.unionId,
+						projectName:projectName,
+					}).then(function(){
+						refreshProjectList();
+					});
+				}
+			}
+		});
+	},
+	removeProject:function(){
+		var self=this;
+		confirmModal.open({
+			header:'警告！',
+			content:'确认删除该项目：'+self.name+'?',
+			callback:function(flag)
+			{
+				if(flag)
+				{
+					asynData('DeleteProject',{
+						email:userData.email,
+						unionId:userData.unionId,
+						projectId:self._id,
+					}).then(function(){
+						refreshProjectList();
+					});
+				}
+			}
+		});		
 	}
 }
 parseFromUrl('/scripts/components/partial/projectList.html',projectListViewModel,DomUtil.getById('project-pan'));
