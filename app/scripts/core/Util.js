@@ -175,6 +175,10 @@ var Util = {
 		}
 		return -1;
 	},
+	isObject:function(obj){
+		var type = typeof obj;
+        return type === 'function' || type === 'object' && !!obj;
+	},
 
 	/**
 	 * [storeData write data in localstorage]
@@ -184,7 +188,7 @@ var Util = {
 	 */
 	storeData:function(key,object){
  		var value = '';
-        if (_objUtil.isObject(object)) {
+        if (this.isObject(object)) {
             value = JSON.stringify(object);
         } else {
             value = object;

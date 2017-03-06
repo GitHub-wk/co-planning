@@ -8,12 +8,13 @@ function userLogin(opts){
 	userModel.findOne({email:opts.email,password:opts.password},function(error,user){
 		var back=null;
         if (error || !user) {
-            back = { msg: STATUS.LOGIN_ERROR.lng, data: null, code: STATUS.LOGIN_SUCCESS.code }
+            back = { msg: STATUS.LOGIN_ERROR.lng, data: null, code: STATUS.LOGIN_ERROR.code ,status:STATUS.ERROR.code}
             defer.reject(back);
         }
 		else{
+			console.log('user login:',user.email);
 			var user=userLayer.add(user);
-			back={msg:STATUS.LOGIN_SUCCESS.lng,data:user,code:STATUS.LOGIN_SUCCESS.code};
+			back={msg:STATUS.LOGIN_SUCCESS.lng,data:user,code:STATUS.LOGIN_SUCCESS.code,status:STATUS.SUCCESS.code};
 			defer.resolve(back);
 		}		
 	});

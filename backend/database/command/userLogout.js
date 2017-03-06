@@ -8,7 +8,7 @@ function userLogout(opts) {
     var unionId = opts.unionId;
     var back = null;
     userLayer.logout(email, unionId);
-    back = {msg:STATUS.LOGOUT_SUCCESS.lng, data: null, code: STATUS.LOGOUT_SUCCESS.code };
+    back = {msg:STATUS.LOGOUT_SUCCESS.lng, data: null, code: STATUS.LOGOUT_SUCCESS.code,status:STATUS.SUCCESS.code };
     return Q.when(back);
 }
 

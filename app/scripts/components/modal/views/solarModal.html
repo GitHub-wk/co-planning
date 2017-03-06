@@ -1,0 +1,20 @@
+<div class="modal fade" style="width:100%;background-color: rgba(0,0,0,0.5);">
+    <div class="modal-dialog">
+        <div class="modal-content" style="height:100%;">
+            <div class="modal-header">
+                <button type="button" class="close" data-bind="click:closeFn"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">光照分析</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="solar">Name</label>
+                    <input type="datetime" class="form-control" id="solar" data-bind="value: solarTime" placeholder="请输入采光时间">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bind="click:function(){offSolar(false)}">关闭光照</button>
+                <button type="button" class="btn btn-primary" data-bind="click:function(){emitSolar(true)}">显示光照</button>
+            </div>
+        </div>
+    </div>
+</div>

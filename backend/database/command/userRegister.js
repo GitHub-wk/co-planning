@@ -14,11 +14,12 @@ function userRegister(opts) {
     user.save(function (error) {
         var back = null;
         if (error) {
-            back = { msg: STATUS.REGISTER_ERROR.lng, data: null, code: STATUS.REGISTER_ERROR.code };
+            back = { msg: STATUS.REGISTER_ERROR.lng, data: null, code: STATUS.REGISTER_ERROR.code ,status:STATUS.ERROR.code};
             defer.reject(back);
         }
         else {
-            back = { msg: STATUS.REGISTER_SUCCESS.lng, data: user, code: STATUS.REGISTER_SUCCESS.code };
+            console.log('user register:',user.email);
+            back = { msg: STATUS.REGISTER_SUCCESS.lng, data: user, code: STATUS.REGISTER_SUCCESS.code ,status:STATUS.SUCCESS.code};
             defer.resolve(back);
         }
     });

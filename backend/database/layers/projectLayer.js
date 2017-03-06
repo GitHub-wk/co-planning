@@ -91,7 +91,7 @@ projectLayer.prototype.getMemberBySocketId=function(projectId,socketId){
   		for(var memberId in members)
   		{
   			var member=project.members[memberId];
-  			if(member.socketId&&member.socketId!==client.id)
+  			if(member.socketId&&member.socketId===socketId)
   			{
   				return member;
   			}
@@ -127,8 +127,7 @@ projectLayer.prototype._add=function(project){
 			socketId:null,
 		}
 	}
-	console.log('add project:',project._id);
-	console.log(this.projects);
+	console.log('add project to ProjectLayer:',project._id);
 	return proj;
 }
 

@@ -1,9 +1,16 @@
 var webpack = require("webpack");
 module.exports = {
-     entry: './entry.js',
+     entry: {
+     	//map
+     	co_planning:'./co_planning_entry.js',
+     	//welcome
+     	welcome:'./index_welcome_entry.js',
+     	//user
+     	user:'./user_entry.js',
+     },
      output: {
          path: './build',
-         filename: 'app.bundle.js'
+         filename: '[name].bundle.js'
      },
 	module: {
 		loaders: [

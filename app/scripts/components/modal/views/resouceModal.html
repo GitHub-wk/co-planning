@@ -1,0 +1,68 @@
+<div class="modal fade" style="width:100%;background-color: rgba(0,0,0,0.5);">
+    <div class="modal-dialog">
+        <div class="modal-content" style="height:100%;">
+            <div class="modal-header">
+                <button type="button" class="close" data-bind="click:closeModal"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">建筑资源列表</h4>
+            </div>
+            <div class="modal-body">
+                <table class="modal-table">
+                    <thead>
+                        <tr>
+                            <th>资源名称</th>
+                            <th>资源地址</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: resourceList">
+                        <tr class="modal-table-row">
+                            <td>
+                                <div data-bind="text: name"></div>
+                            </td>
+                            <td>
+                                <img data-bind="url: faceImg" />
+                            </td>
+                            <td>
+                                <button data-bind="click: $root.loadResource">获取</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bind="click:function(){addResource(true)}">添加资源</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="user-modal">
+    <div class="modal-head">
+        建筑资源列表
+        <span class="close-icon" data-bind = "click: resourcemodal.closeModal">X</span>
+    </div>
+
+    <div class="data-modal-body">
+        <table class="modal-table">
+            <thead>
+                <tr>
+                    <th>资源名称</th>
+                    <th>资源地址</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: resourcemodal.dataArr">
+                <tr class="modal-table-row">
+                    <td>
+                        <div data-bind="text: name"></div>
+                    </td>
+                    <td>
+                       <img data-bind="url: faceImg" />
+                    </td>
+                    <td>
+                        <button data-bind="click: $root.resourcemodal.loadResource">获取</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div> -->

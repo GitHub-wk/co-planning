@@ -6,7 +6,7 @@
 import AppDispatcher from '../components/AppDispatcher.js';
 import {EventEmitter,assign} from '../core/core.js';
 import {BUILDING_CONSTS} from './CONSTANTS.js';
-
+import {buildingTOJSON} from '../components/commonTool/buildingTool.js';
 
 var _buildings = {
   'VERSION':'0.0.1'
@@ -64,6 +64,20 @@ var BuildingStore = assign({}, EventEmitter.prototype, {
     }
     return buildings;
   },
+  toJson:function(){
+    var geoJson={
+      "type": "FeatureCollection",                                                                               
+      "features": []}
+    for(var key in _buildings)
+    {
+      var building=_buildings[key];
+      if(key!=='VERSION'&&!building.remove)
+      {
+        geoJson.features.push(buildingTOJSON(building.mesh));
+      }
+    }
+    return geoJson;
+  },
   dispatcherIndex: AppDispatcher.register(function(payload) {
     var action = payload.action;
     var building;
@@ -91,6 +105,19 @@ var BuildingStore = assign({}, EventEmitter.prototype, {
           console.log(command.name);
           BuildingStore.emit(BUILDING_CONSTS.REMOVE,command);
         }
+        break;
+      case BUILDING_CONSTS.REMOVEALL:
+        for(var key in _buildings)
+        {
+          if(key!=='VERSION') 
+          {
+            var buildingMesh=_buildings[key].mesh;
+            buildingMesh.parent.remove(buildingMesh);
+            delete _buildings[key];
+          }
+        }
+        break;
+
     }
     return true; // No errors. Needed by promise in Dispatcher.
   }),

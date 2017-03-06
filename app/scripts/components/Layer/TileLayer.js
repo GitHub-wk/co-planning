@@ -2,7 +2,16 @@
 import {Layer} from './Layer.js';
 import {Util,DomEvent} from '../../core/core.js';
 import * as THREE from 'threejs';
-
+var defualtMap=(function(){
+	var tmpcanvas = document.createElement('canvas');
+	tmpcanvas.width = 256;
+	tmpcanvas.height = 256;
+	var tmpctx = tmpcanvas.getContext('2d');
+	tmpctx.fillStyle="#96CDCD";
+	tmpctx.fillRect(0,0,256,256);
+	 var defualtMap = new THREE.CanvasTexture(tmpcanvas);
+	 return defualtMap;
+})()
 export class TileLayer extends Layer{
 	constructor(object,name,url){
 		super(object,name);
@@ -75,15 +84,16 @@ export class TileLayer extends Layer{
 		this.loadBoxTile(box);
 	}
 	getTile(x,y,z){
-    	var loader = new THREE.TextureLoader();
-    	//var url='http://online3.map.bdimg.com/tile/?qt=tile&x='+x+'&y='+y+'&z='+z+'&styles=pl&scaler=1&udt=20161216';
-		var tileTexture = loader.load(Util.template(this.url,{x:x,y:y,z:z}));
-		tileTexture.wrapS = tileTexture.wrapT = THREE.RepeatWrapping;
-        tileTexture.repeat.set(1, 1);
     	var geometry = new THREE.PlaneGeometry(256*Math.pow(2,18-z),256*Math.pow(2,18-z));
-	    var material = new THREE.MeshLambertMaterial({ map:tileTexture});
+	    var material = new THREE.MeshLambertMaterial({ map:defualtMap});
 	    var tile= new THREE.Mesh(geometry, material);
+    	var loader = new THREE.TextureLoader();
 	    tile.userData.id=x+'_'+y+'_'+z;
+	    loader.load(Util.template(this.url,{x:x,y:y,z:z}),function(tileTexture){
+			tileTexture.wrapS = tileTexture.wrapT = THREE.RepeatWrapping;
+	        tileTexture.repeat.set(1, 1);
+	        tile.material.map=tileTexture;
+	    });
 	    return tile;   
 	}
 	//TMS map Tile

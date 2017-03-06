@@ -1,44 +1,60 @@
 // modal.js
 import {DomUtil,Util} from '../../core/core.js';
-
-require('./confirmModal.less');
-var UI=DomUtil.UI;
-class ConfirmModal{
-	constructor(){
-		this.modal=new UI.Modal();
-		this.modal.setPosition('fixed').setClass('modal');
-		this.modal.container.setWidth('300px');
-		DomUtil.appendChild(document.body,this.modal.dom);
-		this.confirm=new UI.Div().setClass('confirm-modal');
-
-		this.confirmHeader=new UI.Div().setClass('confirm-header');
-		this.confirmBody=new UI.Div().setClass('confirm-body');
-		this.confirmFooter=new UI.Div().setClass('confirm-footer');
-		this.headerText=new DomUtil.create('h2','header',this.confirmHeader.dom);
-		this.bodyText=new DomUtil.create('p','body',this.confirmBody.dom);
-		var scope=this;
-		var cancelButton=new UI.Button('取消').setClass('button-cancel').onClick(function(){scope.confirmFn(false);});
-		var confirmButton=new UI.Button('确认').setClass('button-confirm').onClick(function(){scope.confirmFn(true)});
-		this.confirmFooter.add(cancelButton,confirmButton);
-	}
-	show(opts)
-	{
-		this.confirm.clear();
-		if(opts.header)
-		{
-			this.headerText.innerHTML=opts.header;
-			this.confirm.add(this.confirmHeader);
-		}
-		if(opts.content)
-		{			
-			this.bodyText.innerHTML=opts.content;
-			this.confirm.add(this.confirmBody);
-		}
-		this.confirm.add(this.confirmFooter);
-		this.confirmFn=opts.callback||Util.falseFn;
-		this.modal.show(this.confirm);
+import {BootstrapModal} from './modal.js';
+import ko from 'knockout';
+//confirmModal
+var confirmModal=null;
+var confirmViewModal={
+	headerText:ko.observable(''),
+	contentText: ko.observable(''),
+	closeFn:function(){
+		confirmModal.hide();
+	},
+	clickFn:function(){
+		confirmModal.hide();
 	}
 }
-var confirmModal=new ConfirmModal();
+BootstrapModal.fromTemplateUrl('/scripts/components/commonTool/confirmModal.html',{viewModel:confirmViewModal})
+.then(function(modal){
+	confirmModal=modal;
+	confirmModal.open=function(opts)
+	{
 
-export{confirmModal};
+		confirmViewModal.headerText(opts.header||'确认');
+		confirmViewModal.contentText(opts.content||'内容');
+		confirmViewModal.clickFn=function(flag){
+			opts.callback&&(opts.callback(flag));
+			confirmModal.hide();
+		}
+		confirmModal.show();
+	}
+});
+
+//inputModal
+//-----------------------------------------------
+var inputModal=null;
+var inputViewModal={
+	headerText:ko.observable(''),
+	inputText: ko.observable(''),
+	closeFn:function(){
+		inputModal.hide();
+	},
+	clickFn:function(){
+		inputModal.hide();
+	}
+}
+BootstrapModal.fromTemplateUrl('/scripts/components/commonTool/inputModal.html',{viewModel:inputViewModal})
+.then(function(modal){
+	inputModal=modal;
+	inputModal.open=function(opts)
+	{
+		inputViewModal.headerText(opts.headerText||'确认');
+		inputViewModal.inputText(opts.inputText||'');
+		inputViewModal.clickFn=function(flag){
+			opts.callback&&(opts.callback(flag,inputViewModal.inputText()));
+			inputModal.hide();
+		}
+		inputModal.show();
+	}
+});
+export{confirmModal,inputModal};
