@@ -5,6 +5,7 @@ var router = express.Router();
 var projectModel = require('../database/model/projectModel');
 var userLayer = require('../database/layers/userLayer.js');
 var STATUS=require('./CONSTANT.js').STATUS;
+var RESOURCETYPE=require('./CONSTANT.js').RESOURCETYPE;
 //body:userName:,unionId:,projectName
 //project api should first test user auth;
 router.use(['/project','/projects'],function(req,res,next){
@@ -212,7 +213,7 @@ router.post('/project/search',function(req,res){
         else{
             //this api can not get projectData;
             delete project.projectData;
-            if(type!==undefined)
+            if(type===RESOURCETYPE.BUILDING||type===RESOURCETYPE.MODAL||type===RESOURCETYPE.TEXTURE)
             {
                 var projectResources=project.resources;
                 var chooseResources=[];

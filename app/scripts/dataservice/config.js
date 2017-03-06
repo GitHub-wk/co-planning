@@ -21,6 +21,7 @@ var imgUrl=baseUrl+'/img/';
 var _urlList={
 	img:imgUrl,
 	textures:texturesUrl,
+	resourcesUrl:baseUrl+'/resources/',
 	base:baseUrl,
 }
 var _apiList={
@@ -69,7 +70,7 @@ var _apiList={
 		method:HTTPMETHOD.POST
 	},
 	GetProjectDetail:{
-		url:baseUrl+'/project/search',
+		url:baseUrl+'/project/search?type={type}',
 		method:HTTPMETHOD.POST
 	}
 }
