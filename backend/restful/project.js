@@ -166,6 +166,7 @@ router.delete('/project/resources',function(req,res){
     var email=req.body.email;
     var projectId=req.body.projectId;
     var resources=req.body.resources;
+    console.log(resources);
     projectModel.findOneAndUpdate({_id:projectId,leader:email},{
         '$pullAll':{
         "resources":resources

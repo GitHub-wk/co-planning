@@ -61,7 +61,7 @@ var _apiList={
 		url:baseUrl+'/project/resources',
 		method:HTTPMETHOD.POST
 	},
-	DELETEResources:{
+	DeleteResources:{
 		url:baseUrl+'/project/resources',
 		method:HTTPMETHOD.DELETE
 	},

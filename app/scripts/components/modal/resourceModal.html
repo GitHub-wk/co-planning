@@ -1,0 +1,38 @@
+<div class="modal fade" style="width:100%;background-color: rgba(0,0,0,0.5);overflow: scroll;">
+    <div class="modal-dialog">
+        <div class="modal-content" style="height:100%;">
+            <div class="modal-header">
+                <button type="button" class="close" data-bind="click:closeModal"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" data-bind="text:headerText"></h4>
+            </div>
+            <div class="modal-body">
+                <table class="modal-table">
+                    <thead>
+                        <tr>
+                            <th>名称</th>
+                            <th>图片</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: resourceList">
+                        <tr class="modal-table-row">
+                            <td>
+                                <div data-bind="text: name"></div>
+                            </td>
+                            <td>
+                                <img data-bind="url: faceImg"  style="width:40px;" />
+                            </td>
+                            <td>
+                                <button class="btn btn-primary" data-bind="click: $root.loadResource">获取</button>
+                                <button class="btn btn-danger" data-bind="click: $root.removeResource">删除</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bind="click:addResource">添加资源</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,7 +1,7 @@
  // menu.importdata.component.js
  import { DomEvent, DomUtil } from '../../core/core.js';
  import { ImportItem, IMPORTTYPE } from './menuFile.import.component.js';
- import {resourceModal} from '../modal/resource.component.js';
+ import {resourceModal} from '../modal/resourceModal.js';
  import { user, asynData, getLocalProjectId }  from '../../dataservice/CommonDatabase.js';
 
  var lang = {
@@ -40,14 +40,6 @@
     ];
 
  function readFile(type) {
-     var projectId = getLocalProjectId();
-     asynData('GetProjectDetail', Object.assign(user.getUser(), { projectId }), { type })
-         .then(function(res) {
-             resourceModal.open(res.data.resources);
-         }, function(err) {
-             console.log('获取项目资源列表失败');
-             //TOD XR TEST
-              resourceModal.open(resource, type);
-         })
+     resourceModal.open({type:1,callBack:function(resource){console.log(resource)}});
 
  }
