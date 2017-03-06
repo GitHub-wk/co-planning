@@ -65,8 +65,10 @@ function asynData(apiName, data={},urlFormat){
 	})
 }
 
+var _projectId=null;
 function getLocalProjectId(){
-	var projectId=Util.getData('$$projectId');
+	var projectId=_projectId||Util.getData('$$projectId');
+	_projectId=projectId;
 	return projectId;
 }
 
