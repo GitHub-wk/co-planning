@@ -1,6 +1,6 @@
 // setMaterialCommand.js
 import Command from './Command.js';
-import {texturesUrl} from '../../dataservice/config.js';
+import {resourceFilter} from '../../dataservice/config.js';
 import * as THREE from 'threejs';
 
 export default class SetMaterialCommand extends Command{
@@ -16,7 +16,7 @@ export default class SetMaterialCommand extends Command{
 	execute(){
 		if(this.object)
 		{
-		    var texture = new THREE.TextureLoader().load(texturesUrl+this.newMaterial);
+		    var texture = new THREE.TextureLoader().load(resourceFilter(this.newMaterial));
 		    texture.wrapS = THREE.RepeatWrapping;
 			texture.wrapT = THREE.RepeatWrapping;
 			this.object.material.materials[1].map=texture;

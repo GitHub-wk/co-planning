@@ -16,11 +16,9 @@ var socketUrl='ws://172.16.102.186:3000';
 
 var baseUrl="http://172.16.102.186:8082";
 
-var texturesUrl=baseUrl+'/textures/';
 var _urlList={
 	img:baseUrl+'/img/',
-	textures:texturesUrl,
-	resourcesUrl:baseUrl+'/resources/',
+	resources:baseUrl+'/resources/',
 	base:baseUrl,
 }
 var _apiList={
@@ -95,11 +93,13 @@ function getUrl(name)
 function imgFilter(url){
 	return getUrl('img')+(url||'noPic.jpg');
 }
+function resourceFilter(url){
+	return getUrl('resources')+url;
+}
 export{
 	getAPI,
 	socketUrl,
-	texturesUrl,
 	getUrl,
-	imgFilter
-
+	imgFilter,
+	resourceFilter,
 }

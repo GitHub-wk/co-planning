@@ -6,6 +6,12 @@ var projectModel = require('../database/model/projectModel');
 var userLayer = require('../database/layers/userLayer.js');
 var STATUS=require('./CONSTANT.js').STATUS;
 var RESOURCETYPE=require('./CONSTANT.js').RESOURCETYPE;
+var process=require('process');
+var fs=require('fs');
+var path=require('path');
+var cwd=process.cwd();
+var oldFilePath=path.join(cwd,'resource');
+var newFilePath=path.join(cwd,'public');
 //body:userName:,unionId:,projectName
 //project api should first test user auth;
 router.use(['/project','/projects'],function(req,res,next){
@@ -156,6 +162,12 @@ router.post('/project/resources',function(req,res){
             else{
 
                 back={msg:'添加资源成功',data:project,code:STATUS.SUCCESS.code,status:STATUS.SUCCESS.code};
+                //rename resource
+                for(var i=0;i<resources.length;i++){
+                    var resource=resources[i];         
+                    fs.rename(path.join(oldFilePath,resource.faceImg),path.join(newFilePath,'img',resource.faceImg),function(){});
+                    fs.rename(path.join(oldFilePath,resource.url),path.join(newFilePath,'resources',resource.url),function(){});
+                }
             }
             res.json(back);
         });

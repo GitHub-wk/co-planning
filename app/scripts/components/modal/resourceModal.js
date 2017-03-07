@@ -64,7 +64,7 @@ resourceModal.open=function(opts={}){
 			resourceViewModal.headerText('绿地');
 			break;
 		default:
-			resourceViewModal.headerText('');			
+			resourceViewModal.headerText('全部');			
 	}
 	resourceViewModal.loadResource=function(){
 		var self=this;
@@ -120,4 +120,4 @@ function _removeResource(resource,type){
 	})
 }
 
-export { resourceModal };
+export { resourceModal,RESOURCETYPE};

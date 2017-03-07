@@ -7,10 +7,14 @@ import {BuildingStore} from './dataservice/WorldStore.js';
 //
 
 var menuEle=document.getElementsByClassName('menu')[0];
-console.log(menuEle);
+//user
+var userEle = DomUtil.createElement('span', 'menu-bar','');
+var imgEl=DomUtil.create('img','',userEle);
+imgEl.src='http://172.16.102.186:8082/img/noPic.jpg';
+DomUtil.appendChild(menuEle,userEle);
 //file
 var fileMenu=new MenuFile();
-console.log(fileMenu);
+
 DomUtil.appendChild(menuEle,fileMenu.element);
 
 //analysis 

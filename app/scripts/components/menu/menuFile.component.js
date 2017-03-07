@@ -16,11 +16,11 @@
          this.element = DomUtil.createElement('span', 'menu-bar', lang.FILE);
          console.log(this.element);
          var menuFile = DomUtil.create('div', 'menu-file', this.element);
-         var importText = DomUtil.createElement('div', 'item item-text', lang.IMPORT);
+         var importText = DomUtil.createElement('div', 'item item-text divider', lang.IMPORT);
          var importBuilding = new ImportItem(lang.BUILDING, IMPORTTYPE.BUILDING, readFile);
-         var importGreen = new ImportItem(lang.GREEN, IMPORTTYPE.GREEN, readFile);
+         //var importGreen = new ImportItem(lang.GREEN, IMPORTTYPE.GREEN, readFile);
          var importModel = new ImportItem(lang.MODEL, IMPORTTYPE.MODEL, readFile);
-         DomUtil.appendChild(menuFile, [importText, importBuilding.element, importGreen.element, importModel.element]);
+         DomUtil.appendChild(menuFile, [importText, importBuilding.element,importModel.element]);
      }
  }
 

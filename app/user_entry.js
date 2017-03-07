@@ -1,10 +1,9 @@
 // user_entry.js
 import './css/user.less';
 import {user,asynData} from './scripts/dataservice/CommonDatabase.js';
-import {getUrl} from './scripts/dataservice/config.js';
 import axios from 'axios';
 import ko from 'knockout';
-import {getAPI} from './scripts/dataservice/config.js';
+import {getAPI,imgFilter} from './scripts/dataservice/config.js';
 import DomUtil from './scripts/core/DomUtil.js';
 import DomEvent from './scripts/core/DomEvent.js';
 import Util from './scripts/core/Util.js';
@@ -19,11 +18,8 @@ console.log(userData);
 function UserInfoViewModel(){
 	var self=this;
 	self.userName=ko.observable(userData.userName);
-	self.imgUrl=ko.observable(userData.faceImg),
-	self.faceImg=ko.computed(function(){
-		var imgUrl=self.imgUrl()||'noPic.jpg';
-		return getUrl('img')+imgUrl;
-	})
+	self.imgFilter=imgFilter;
+	self.faceImg=userData.faceImg;
 	self.email=userData.email;
 }
 parseFromUrl('/scripts/components/partial/userInfo.html',new UserInfoViewModel(),DomUtil.getById('user-info'));

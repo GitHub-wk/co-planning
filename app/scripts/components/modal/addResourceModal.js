@@ -9,7 +9,7 @@ import axios from 'axios';
 var _addResourceModal = null;
 var addResourceViewModal = {
     type: ko.observable(''),
-    headerText:ko.observable(''),
+    headerText:ko.observable('新增'),
     resourceName: ko.observable(''),
     resourceFile:'',
     resourceImg: '',
