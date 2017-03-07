@@ -1,6 +1,7 @@
 //Solar.js  -- use to create a solar which can create shadow
 import { MercatorProjection } from '../geo/MercatorProjection.js';
 import { SolarAngle } from '../geo/SolarAngle.js';
+import {Toast} from './commonTool/commonTool.js';
 
 var dist = 10000;
 
@@ -39,7 +40,12 @@ export class Solar {
         var angle = new SolarAngle(this.date, this.targetLatLng).getSolarAngle();
         console.log(angle);
         if(angle.elevation <= 0){
-        	return console.log(('here has no solar now'));
+        	Toast.info({
+                text:'这个时间没有阳光',
+                position:'top-right',
+                type:'danger'
+            }).show();
+            return false;
         }
 
         var deltaX = dist * Math.sin(angle.direction),
@@ -48,7 +54,7 @@ export class Solar {
         var targetCoord = this.projection.lngLatToPoint(this.targetLatLng);
         this.light.target.position.set(targetCoord.x, targetCoord.y, 0);
         this.light.position.set(targetCoord.x + deltaX, targetCoord.y + deltaY, deltaZ);
-
+        return true;
     }
 
 

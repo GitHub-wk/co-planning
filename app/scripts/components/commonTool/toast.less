@@ -1,0 +1,48 @@
+/**
+ * @descript  toast提示框样式
+ */
+@partLen : 12px;
+
+.info{
+	position:absolute;
+	padding: 15px 40px;
+	text-align:center;
+	box-shadow: 1px 1px 10px rgba(0,0,0,0.8);
+    border-radius: 5px;
+    transition: all 600ms; 
+    z-index:10000;
+	.info-text{
+		color:#fff;
+	}
+}
+
+.success{
+	background-color: #5cb85c;
+}
+
+.danger{
+	background-color: #c9302c;
+}
+
+.warning{
+	background-color: #ec971f;
+}
+
+body{
+	.top-right{
+		top:@partLen;
+		right:@partLen;
+	}
+	.top-left{
+		top:@partLen;
+		left:@partLen;
+	}
+	.bottom-left{
+		bottom:@partLen;
+		left:@partLen;
+	}
+	.bottom-right{
+		bottom:@partLen;
+		right:@partLen;
+	}
+}

@@ -27,5 +27,4 @@
 
  function readFile(type) {
      resourceModal.open({type:type,callBack:function(resource){console.log(resource)}});
-
  }

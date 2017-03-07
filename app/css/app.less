@@ -221,7 +221,9 @@ input style
 
 .data-form label{
 	display: inline-block;
+	float:left;
     max-width: 100%;
+    min-width:80px;
     padding: 10px;
     margin-bottom: 5px;
     font-weight: 700;
@@ -237,8 +239,8 @@ input style
 
 .data-form input{
 	display: inline-block;
-	float:right;
-    width: 80%;
+	float:left;
+    width: 60%;
     padding: 6px 12px;
     font-size: 14px;
     line-height: 1.42857143;
@@ -252,6 +254,11 @@ input style
     -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.form-group button{
+	float:right;
+	margin-top:4px;
 }
 
 .data-form .uploadBtn{
