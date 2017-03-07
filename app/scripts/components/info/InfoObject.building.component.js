@@ -18,7 +18,7 @@ export default class infoBuilding{
 		var objectHeightRow = new UI.Row();
 		var objectHeight = new UI.Number().setStep( 10 ).setUnit( 'm' ).setWidth( '50px' ).onChange( update );
 		objectHeight.min=0.1;		
-		objectHeightRow.add(new UI.Text(lang.FLOORHEIGHT).setWidth('90px'));
+		objectHeightRow.add(new UI.Text(lang.FLOORHEIGHT).setWidth('60px'));
 		objectHeightRow.add(objectHeight);
 
 		DomUtil.appendChild(this.element,objectHeightRow.dom);
@@ -26,7 +26,7 @@ export default class infoBuilding{
 		var objectFloorRow = new UI.Row();
 		var objectFloor = new UI.Integer(1).setWidth( '100px' ).onChange( update );
 		objectFloor.min=1;	
-		objectFloorRow.add(new UI.Text(lang.FLOORNUM).setWidth('90px'));
+		objectFloorRow.add(new UI.Text(lang.FLOORNUM).setWidth('60px'));
 		objectFloorRow.add(objectFloor);
 
 		DomUtil.appendChild(this.element,objectFloorRow.dom);

@@ -47,7 +47,7 @@ export default class InfoObject{
 		//name
 		var objectTypeRow = new UI.Row();
 		var objectType = new UI.Text();
-		objectTypeRow.add( new UI.Text(lang.NAME).setWidth( '90px' ) );
+		objectTypeRow.add( new UI.Text(lang.NAME).setWidth( '60px' ) );
 		objectTypeRow.add( objectType );
 		var objectDelete=new UI.Button(lang.DEL).setClass('btn btn-danger btn-sm').setPosition('absolute').setRight('10px').onClick(deleteObject);
 		objectTypeRow.add(objectDelete);
@@ -56,21 +56,21 @@ export default class InfoObject{
 
 		// position
 		var objectPositionRow = new UI.Row();
-		var objectPositionX = new UI.Number().setWidth( '50px' ).onChange( update );
-		var objectPositionY = new UI.Number().setWidth( '50px' ).onChange( update );
-		var objectPositionZ = new UI.Number().setWidth( '50px' ).onChange( update );
-		objectPositionRow.add( new UI.Text(lang.POSITION).setWidth( '90px' ) );
+		var objectPositionX = new UI.Number().setStep( 10 ).setWidth( '70px' ).setMarginRight('5px').onChange( update );
+		var objectPositionY = new UI.Number().setStep( 10 ).setWidth( '70px' ).setMarginRight('5px').onChange( update );
+		var objectPositionZ = new UI.Number().setStep( 10 ).setWidth( '50px' ).onChange( update );
+		objectPositionRow.add( new UI.Text(lang.POSITION).setWidth( '60px' ) );
 		objectPositionRow.add( objectPositionX, objectPositionY,objectPositionZ);
 
 		commonInfo.add(objectPositionRow);
 
 		//rotation
 		var objectRotationRow = new UI.Row();
-		var objectRotationX = new UI.Number().setStep( 10 ).setUnit( '°' ).setWidth( '50px' ).onChange( update );
-		var objectRotationY = new UI.Number().setStep( 10 ).setUnit( '°' ).setWidth( '50px' ).onChange( update );
+		var objectRotationX = new UI.Number().setStep( 10 ).setUnit( '°' ).setWidth( '70px' ).setMarginRight('5px').onChange( update );
+		var objectRotationY = new UI.Number().setStep( 10 ).setUnit( '°' ).setWidth( '70px' ).setMarginRight('5px').onChange( update );
 		var objectRotationZ = new UI.Number().setStep( 10 ).setUnit( '°' ).setWidth( '50px' ).onChange( update );
 
-		objectRotationRow.add( new UI.Text(lang.ROTATION).setWidth( '90px' ) );
+		objectRotationRow.add( new UI.Text(lang.ROTATION).setWidth( '60px' ) );
 		objectRotationRow.add( objectRotationX, objectRotationY, objectRotationZ );
 
 		commonInfo.add(objectRotationRow);
@@ -79,14 +79,14 @@ export default class InfoObject{
 		var objectScaleRow = new UI.Row();
 		var objectScale = new UI.Number( 1 ).setRange( 0.01, Infinity ).setWidth( '50px' ).onChange( update);
 
-		objectScaleRow.add( new UI.Text(lang.SCALE).setWidth( '90px' ) );
+		objectScaleRow.add( new UI.Text(lang.SCALE).setWidth( '60px' ) );
 		objectScaleRow.add( objectScale);
 		commonInfo.add(objectScaleRow);
 
 		var objectVisibleRow = new UI.Row();
 		var objectVisible = new UI.Checkbox().onChange( update );
 
-		objectVisibleRow.add( new UI.Text(lang.VISIBLE).setWidth( '90px' ) );
+		objectVisibleRow.add( new UI.Text(lang.VISIBLE).setWidth( '60px' ) );
 		objectVisibleRow.add( objectVisible );
 
 		commonInfo.add(objectVisibleRow);
