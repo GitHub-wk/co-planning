@@ -214,13 +214,13 @@ router.post('/project/search',function(req,res){
         else{
             //this api can not get projectData;
             delete project.projectData;
-            if(type===RESOURCETYPE.BUILDING||type===RESOURCETYPE.MODAL||type===RESOURCETYPE.TEXTURE)
+            if(type==RESOURCETYPE.BUILDING||type==RESOURCETYPE.MODAL||type==RESOURCETYPE.TEXTURE)
             {
                 var projectResources=project.resources;
                 var chooseResources=[];
                 for(var i=0;i<projectResources.length;i++)
                 {
-                    if(projectResources[i].type===type)
+                    if(projectResources[i].type==type)
                     {
                         chooseResources.push(projectResources[i]);                           
                     }

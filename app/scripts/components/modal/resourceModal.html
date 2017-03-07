@@ -6,7 +6,7 @@
                 <h4 class="modal-title" data-bind="text:headerText"></h4>
             </div>
             <div class="modal-body">
-                <table class="modal-table">
+                <table class="modal-table" style="table-layout: fixed;">
                     <thead>
                         <tr>
                             <th>名称</th>
@@ -16,13 +16,13 @@
                     </thead>
                     <tbody data-bind="foreach: resourceList">
                         <tr class="modal-table-row">
-                            <td>
-                                <div data-bind="text: name"></div>
+                            <td style="vertical-align:middle;text-align: center;" width="33%">
+                                <p data-bind="text: name" style="text-overflow:ellipsis;overflow: hidden;"></p>
                             </td>
-                            <td>
-                                <img data-bind="url: faceImg"  style="width:40px;" />
+                            <td style="vertical-align:middle;" width="33%">
+                                <img data-bind="attr:{src:$root.imgFilter()}"  style="width:60px;" />
                             </td>
-                            <td>
+                            <td style="vertical-align:middle;" width="33%">
                                 <button class="btn btn-primary" data-bind="click: $root.loadResource">获取</button>
                                 <button class="btn btn-danger" data-bind="click: $root.removeResource">删除</button>
                             </td>

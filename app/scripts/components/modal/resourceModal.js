@@ -4,6 +4,7 @@ import { DomUtil, Util ,EventEmitter} from '../../core/core.js';
 import { BootstrapModal } from '../commonTool/modal.js';
 import { addResourceModal } from './addResourceModal.js';
 import { user, asynData, getLocalProjectId } from '../../dataservice/CommonDatabase.js';
+import {imgFilter} from '../../dataservice/config.js';
 import ko from 'knockout';
 import axios from 'axios';
 const RESOURCETYPE={
@@ -17,6 +18,7 @@ var resourceViewModal = {
 	type:ko.observable(''),
 	headerText:ko.observable(''),
     resourceList: ko.observableArray([]),
+    imgFilter:imgFilter,
     loadResource: function(){   	
     },
     addResource: function(){
@@ -44,6 +46,7 @@ BootstrapModal.fromTemplateUrl('/scripts/components/modal/resourceModal.html', {
 var resourceModal={};
 resourceModal.open=function(opts={}){
 	var type=opts.type;
+	console.log(opts);
 	resourceViewModal.resourceList([]);
 	resourceViewModal.type(type);
 	_refreshResource(type);
@@ -59,6 +62,7 @@ resourceModal.open=function(opts={}){
 			break;
 		case RESOURCETYPE.GREEN:
 			resourceViewModal.headerText('绿地');
+			break;
 		default:
 			resourceViewModal.headerText('');			
 	}

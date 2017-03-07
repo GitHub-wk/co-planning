@@ -24,22 +24,8 @@
      }
  }
 
- var resource =[
-        {
-            "type":"1",
-            "url":"21038921.json",
-            "name":"建筑1",
-            "faceImg":"图1片"
-        },{
-            "type":"1",
-            "url":"21038921.json",
-            "name":"建筑1",
-            "faceImg":"图1片"
-            
-        }
-    ];
 
  function readFile(type) {
-     resourceModal.open({type:1,callBack:function(resource){console.log(resource)}});
+     resourceModal.open({type:type,callBack:function(resource){console.log(resource)}});
 
  }

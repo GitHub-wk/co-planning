@@ -62,6 +62,11 @@ addResourceModal.open=function(opts){
             name: addResourceViewModal.resourceName(),
             faceImg: addResourceViewModal.resourceImg,
         };
+        if(!addResourceViewModal.resourceFile||!addResourceViewModal.resourceImg)
+        {
+            alert('地址为空！！');
+            return false;
+        }
         addResourceViewModal.closeModal();
         opts.callBack&&(opts.callBack(resource));
 	}
