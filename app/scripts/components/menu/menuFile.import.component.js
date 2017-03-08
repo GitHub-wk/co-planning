@@ -1,7 +1,6 @@
 // menuFile.import.component.js
 import { DomEvent, DomUtil } from '../../core/core.js';
 
-
 export const IMPORTTYPE = {
     "BUILDING": 1,
     "GREEN": 2,

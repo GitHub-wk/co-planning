@@ -3,9 +3,9 @@
  import { AnalysisItem, ANALYSISTYPE } from './menuAnalysis.import.component.js';
  import { Solar } from '../Solar.js';
  import * as THREE from 'threejs';
-import {solarModal} from '../modal/solar.component.js';
-
-
+ import { solarModal } from '../modal/solarModal.js';
+ import { houseFormModal } from '../modal/houseFormModal.js';
+ import {Toast} from '../commonTool/commonTool.js';
 
  var lang = {
      "ANALYSIS": "分析",
@@ -27,16 +27,17 @@ import {solarModal} from '../modal/solar.component.js';
      }
  }
 
-
  //analysisFunction.js
  function lighting() {
-     // DomUtil.toggleClass(solarmodal.element, 'modal-display');
-     console.log(solarModal);
      solarModal.open();
+     // var info = Toast.info({
+     //     text: 'default text' + count++,
+     //     position: 'top-right',
+     //     type: 'success'
+     // });
+     // info.show();
  }
 
-
  function form() {
- 	console.log('form button clicked');
-     // DomUtil.toggleClass(houseformmodal.element, 'modal-display');
+     houseFormModal.open();
  }
