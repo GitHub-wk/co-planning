@@ -10,11 +10,7 @@ import axios from 'axios';
 var _addResourceModal = null;
 var addResourceViewModal = {
     type: ko.observable(''),
-<<<<<<< Updated upstream
     headerText:ko.observable('新增'),
-=======
-    headerText: ko.observable(''),
->>>>>>> Stashed changes
     resourceName: ko.observable(''),
     resourceFile: '',
     resourceImg: '',
@@ -70,7 +66,6 @@ addResourceModal.open = function(opts) {
             faceImg: addResourceViewModal.resourceImg,
         };
         if (!addResourceViewModal.resourceFile || !addResourceViewModal.resourceImg) {
-
             return  Toast.info({
                 text: '文件地址不能为空',
                 position: 'top-right',
