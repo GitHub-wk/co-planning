@@ -14,7 +14,6 @@
  export default class MenuFile {
      constructor() {
          this.element = DomUtil.createElement('span', 'menu-bar', lang.FILE);
-         console.log(this.element);
          var menuFile = DomUtil.create('div', 'menu-file', this.element);
          var importText = DomUtil.createElement('div', 'item item-text divider', lang.IMPORT);
          var importBuilding = new ImportItem(lang.BUILDING, IMPORTTYPE.BUILDING, readFile);
@@ -27,5 +26,4 @@
 
  function readFile(type) {
      resourceModal.open({type:type,callBack:function(resource){console.log(resource)}});
-
  }

@@ -83,7 +83,7 @@ var projectListViewModel={
 			return true;
 		}
 		else{
-			alert('请先在输入框填写项目id！');
+			alert('请先在输入框填写项目标识码！');
 			return false;
 		}
 	},

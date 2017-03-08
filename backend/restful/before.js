@@ -13,6 +13,12 @@ router.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
 	next();
 });
-router.use(express.static(path.join(process.cwd(), 'public')));
+var options = {
+	dotfiles: 'ignore',
+	etag: true,
+	maxAge: '10000',
+	lastModified:true,
+};
+router.use(express.static(path.join(process.cwd(), 'public'),options));
 
 module.exports=router;

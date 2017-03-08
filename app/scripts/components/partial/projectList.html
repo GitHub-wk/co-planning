@@ -13,6 +13,9 @@
 				项目占地(m2)：<span data-bind="text:projectArea"></span>
 				&nbsp;&nbsp;&nbsp;绿化用地(m2)：<span data-bind="text:greenArea"></span>
 			</p>
+			<p>项目标识码：
+				<span data-bind="text:_id"></span>
+			</p>
 			<p>成员列表：
 				<span data-bind="text:members"></span>
 			</p>
@@ -32,7 +35,7 @@
 		<input type="text" class="input" style="width:200px;float: left" data-bind="value:joinedId"/>
 		 		<button class='btn btn-primary' style="float: left;margin-left:20px;" data-bind="click:function(){goProject(this.joinedId())}">进入</button>
 		<p>
-			（请先向项目组长所要id）
+			（请先向项目组长所要项目标识码）
 		</p>
  	</div>
 </div>
