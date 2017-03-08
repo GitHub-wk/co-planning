@@ -19,7 +19,7 @@
      constructor() {
          this.element = DomUtil.createElement('div', 'menu-bar', lang.ANALYSIS);
 
-         var menuBar = DomUtil.create('div', 'menu-file', this.element);
+         var menuBar = DomUtil.create('div', 'menu-analysis', this.element);
          var importLighting = new AnalysisItem(lang.LIGHTING, ANALYSISTYPE.LIGHTING, lighting);
          var importForm = new AnalysisItem(lang.FORM, ANALYSISTYPE.FORM, form);
 

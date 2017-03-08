@@ -44,7 +44,8 @@
 			}
 		}	
 	}
-	.menu-bar .menu-file{
+	.menu-bar .menu-file,
+	.menu-bar .menu-analysis{
 		position:absolute;
 		left:0;
 		display:none;
@@ -60,14 +61,24 @@
 			border-bottom:1px solid #d5d5d5;
 		}
 	}
+	.menu-bar .menu-analysis{
+		width:100px;
+	}
 	.menu-bar img{
 		width:32px;
 		height:32px;
 		border-radius:50%;
 		vertical-align:middle;
 	}
-	.menu-bar:hover .menu-file{
+	.menu-bar:hover .menu-file,
+	.menu-bar:hover .menu-analysis{
 		display:block;
+	}
+	.menu-bar .item:hover{
+		background-color:#ececec;
+	}
+	.menu-bar .item.item-text:hover{
+		background-color:#fff;
 	}
 	.content{
 		overflow:hidden;

@@ -5,8 +5,33 @@
                 <button type="button" class="close" data-bind="click:closeModal"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">小区报表</h4>
             </div>
-            <div class="modal-body">
-               
+            <div class="modal-body">           
+                 <form class="data-form">
+                    <div class="form-group">
+                        <label style="width: 140px;">总面积面积(m2)：</label>
+                        <input type="text" class="form-control" data-bind="value:projectArea"/>
+                    </div>
+                     <div class="form-group">
+                        <label style="width: 140px;">绿化面积(m2)：</label>
+                        <input type="text" class="form-control" data-bind="value:greenArea"/>
+                    </div>
+                     <div class="form-group">
+                        <label style="width: 140px;">绿化率：</label>
+                        <input type="text" class="form-control" data-bind="value:greenRatio"/>
+                    </div>
+                     <div class="form-group">
+                        <label style="width: 140px;">建筑总面积(m2)：</label>
+                        <input type="text" class="form-control" data-bind="value:buildingArea"/>
+                    </div>
+                     <div class="form-group">
+                        <label style="width: 140px;">建筑密度：</label>
+                        <input type="text" class="form-control" data-bind="value:buildingDensity"/>
+                    </div>
+                     <div class="form-group">
+                        <label style="width: 140px;">容积率：</label>
+                        <input type="text" class="form-control" data-bind="value:plotRatio"/>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
               
