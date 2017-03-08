@@ -14,7 +14,7 @@ var createBuilding=function(shape,properties){
     var position=geometry.center().negate();
     var material1= new THREE.MeshLambertMaterial({color:0xEBE8EB });
 
-    var texture = new THREE.TextureLoader().load(resourceFilter(properties?properties.MATERIALURL:'buildingDefualtUrl.jpg'));
+    var texture = new THREE.TextureLoader().load(resourceFilter((properties&&properties.MATERIALURL)?properties.MATERIALURL:'buildingDefualtUrl.jpg'));
     texture.wrapS = THREE.RepeatWrapping;
 	texture.wrapT = THREE.RepeatWrapping;
     var material2=new THREE.MeshLambertMaterial({map:texture});
@@ -133,9 +133,27 @@ var buildingTOJSON=function(buildingMesh){
 	}
 	return Feature;
 }
+
+var getArea=function (latLngs) {
+    var pointsCount = latLngs.length,
+        area = 0.0,
+        d2r = 0.017453292519943295,
+        p1, p2;
+    if (pointsCount > 2) {
+        for (var i = 0; i < pointsCount; i++) {
+            p1 = latLngs[i];
+            p2 = latLngs[(i + 1) % pointsCount];
+            area += ((p2[0] - p1[0]) * d2r) *
+                (2 + Math.sin(p1[1] * d2r) + Math.sin(p2[1] * d2r));
+        }
+        area = area * 6378137.0 * 6378137.0 / 2.0;
+    }
+    return Math.abs(area);
+}
 export {
 	createBuilding,
 	modifyBuildingHeight,
 	buildingTOJSON,
-	jsonToBuilding
+	jsonToBuilding,
+	getArea,
 }

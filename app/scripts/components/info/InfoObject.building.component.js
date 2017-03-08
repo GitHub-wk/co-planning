@@ -2,10 +2,13 @@
 import {DomUtil,DomEvent,Util} from '../../core/core.js';
 import * as THREE from 'threejs';
 import {SetBuildingHeightCommand} from '../commands/commands.js';
+import {buildingTOJSON,getArea} from '../commonTool/buildingTool.js';
+
 var UI=DomUtil.UI;
 var lang={
 	'FLOORHEIGHT':'层高',
-	'FLOORNUM':'层数'
+	'FLOORNUM':'层数',
+	'AREA':'面积'
 }
 export default class infoBuilding{
 	constructor(intersectNames){
@@ -31,6 +34,13 @@ export default class infoBuilding{
 
 		DomUtil.appendChild(this.element,objectFloorRow.dom);
 
+		//area
+		var objectAreaRow = new UI.Row();
+		var objectArea = new UI.Text();
+		objectAreaRow.add( new UI.Text(lang.AREA).setWidth( '60px' ) );
+		objectAreaRow.add(objectArea);
+		DomUtil.appendChild(this.element,objectAreaRow.dom);
+
 		var scope=this;
 		function update(){
 			var object=scope.selectedObject;
@@ -52,6 +62,9 @@ export default class infoBuilding{
 			Util.log('updateUI in infoObject.building.component');
 			objectHeight.setValue(object.userData.floorHeight||10);
 			objectFloor.setValue(object.userData.floorNum||1);
+			var buildingJson=buildingTOJSON(object);
+			var area=getArea(buildingJson.geometry.coordinates[0]).toFixed(2);
+			objectArea.setValue(area+"(m2)");
 		}
 	}
 	setIntersectNames(intersectNames){

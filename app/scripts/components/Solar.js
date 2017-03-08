@@ -20,7 +20,7 @@ export class Solar {
     constructor() {
         this.date = null;
         this.targetLatLng = null;
-        this.light = new THREE.DirectionalLight(0xffffff, 1);
+        this.light = new THREE.DirectionalLight(0xffffff, 0.5);
         this.light.name = 'solarLight';
         this.light.castShadow = true;
         this.light.shadow.camera.near = 1;

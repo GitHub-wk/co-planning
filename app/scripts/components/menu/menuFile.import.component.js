@@ -7,11 +7,7 @@ export const IMPORTTYPE = {
     "MODEL": 3,
 }
 export class ImportItem {
-    constructor(text, type ,func) {
-        this.element = DomUtil.createElement('div', 'item', text);
-        
-        DomEvent.on(this.element, 'click', function() {
-            func(type);
-        })
+    constructor(text, type) {
+        this.element = DomUtil.createElement('div', 'item', text);        
     }
 }
