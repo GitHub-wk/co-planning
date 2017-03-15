@@ -6,12 +6,32 @@
                 <h4 class="modal-title">光照分析</h4>
             </div>
             <div class="modal-body">
-                <div class="form-group">
-                    <label for="solar">Name</label>
-                    <input type="datetime" class="form-control" id="solar" data-bind="value: solarTime" placeholder="请输入采光时间">
-                </div>
+                <form class="data-form">
+                     <div class="form-group">
+                        <label style="width: 140px;">年： </label>
+                        <input type="number" class="form-control" id="solar" data-bind="value: year" placeholder="请输入年份">
+                    </div>
+                    <div class="form-group">
+                        <label style="width: 140px;">月： </label>
+                        <input type="number" class="form-control" id="solar" data-bind="value: month" placeholder="请输入月份">
+                    </div>
+                    <div class="form-group">
+                        <label style="width: 140px;">日： </label>
+                        <input type="number" class="form-control" id="solar" data-bind="value: day" placeholder="请输入日期">
+                    </div>
+                    <div class="form-group">
+                        <label style="width: 140px;">时(24)： </label>
+                        <input type="number" class="form-control" id="solar" data-bind="value: hour" placeholder="请输入时刻">
+                    </div>
+                    <div class="form-group">
+                        <label style="width: 140px;">分： </label>
+                        <input type="number" class="form-control" id="solar" data-bind="value: min" placeholder="请输入分钟">
+                    </div>
+                </form>
+
             </div>
             <div class="modal-footer">
+                <button type="button" style="float: left;" class="btn btn-primary" data-bind="click:function(){setToCurrent(false)}">设为当前时间</button>
                 <button type="button" class="btn btn-danger" data-bind="click:function(){offSolar(false)}">关闭光照</button>
                 <button type="button" class="btn btn-primary" data-bind="click:function(){emitSolar(true)}">显示光照</button>
             </div>
